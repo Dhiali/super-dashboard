@@ -1,0 +1,54 @@
+.custom-navbar {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    position: relative;
+  }
+  
+  .navbar-logo {
+    width: 180px;
+    height: 85px;
+    object-fit: contain;
+    margin-top: 10px;
+  }
+  
+  .nav-links {
+    position: absolute;
+    left: 53%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 60px;
+  }
+  
+  .nav-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 45px;
+    background-color: transparent;
+    border: 2px solid pink;
+    color: pink;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 20px;
+    border-radius: 53px;
+    color: #FFF;
+text-align: center;
+font-family: Stencil;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+  }
+  
+  .nav-btn:hover {
+    background-color: rgb(246, 246, 246);
+    color: black;
+    box-shadow: 0 0 10px rgb(255, 192, 236);
+  }
+  

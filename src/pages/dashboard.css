@@ -1,0 +1,122 @@
+.dashboard-container {
+    background-color: black;
+    color: white;
+    min-height: 100vh;
+    padding: 40px 60px;
+  }
+  
+  /* Default Bubble: Small box around just the icon */
+  .info-bubble {
+    margin-top: 10px;
+    margin-left: 60px;
+    display: flex;
+    align-items: center;
+    border: 2px solid pink;
+    border-radius: 25px;
+    padding: 10px 15px; /* small padding initially */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.05);
+    max-width: fit-content;
+  }
+  
+  /* Expanded state: when info is shown */
+  .info-bubble.expanded {
+    padding: 25px 35px;
+    max-width: 900px;
+  }
+  
+  /* Info Icon */
+  .info-icon-inside-bubble {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-right: 0; /* no space until expanded */
+  }
+  
+  /* Add spacing only when info is shown */
+  .info-bubble.expanded .info-icon-inside-bubble {
+    margin-right: 20px;
+  }
+  
+  /* Info Text */
+  .info-text {
+    padding-left: 10px;
+    color: white;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+    font-family: "Tw Cen MT";
+    font-weight: 400;
+    max-width: 100%;
+  }
+  
+  /* Optional hover effect */
+  .info-bubble:hover {
+    box-shadow: 0 0 10px pink;
+  }
+  /* Fade-in animation */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Info text fade-in effect */
+  .info-text {
+    flex: 1;
+    padding-left: 10px;
+    color: white;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+    font-family: "Tw Cen MT";
+    font-style: normal;
+    font-weight: 400;
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  /* Optional: smoother margin shift for layout below */
+  .dashboard-content-wrapper {
+    transition: all 0.3s ease;
+  }
+  
+  /* Heading under info bubble */
+.dashboard-heading {
+    margin-top: 60px; /* Always 10px below the bubble */
+    color: rgb(255, 255, 255);
+    font-size: 22px;
+    font-weight: bold;
+    font-family: "Tw Cen MT", sans-serif;
+    text-align: left;
+    padding-left:2px;
+    transition: margin-top 0.3s ease;
+  }
+  
+  /* dashboard.css */
+  .card-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 20px;
+    padding: 20px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+  }
+  
+  /* Hide scrollbar - cross-browser */
+  .card-scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .card-scroll-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  
