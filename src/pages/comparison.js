@@ -33,7 +33,7 @@ const Comparison = () => {
             <p>
               <strong>Compare Superheroes Like Never Before!</strong>
               <br /><br />
-              Welcome to the Comparison Page, where you can pit your favorite superheroes against each other and analyze their strengths, abilities, and physical attributes side by side.
+Welcome to the Comparison Page, where you can pit your favorite superheroes against each other and analyze their strengths, abilities, and physical attributes side by side. Using interactive charts, you can compare power stats, height, weight, and more, gaining a deeper understanding of how these characters stack up. Whether you’re debating who would win in a fight or simply exploring superhero dynamics, this page provides a visual and data-driven way to settle the score. Select your characters and let the showdown begin! 
             </p>
           </div>
         )}

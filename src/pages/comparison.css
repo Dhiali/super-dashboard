@@ -241,3 +241,10 @@
 .comparison-charts {
   width: 48%; /* Ensure character cards and charts have the same width */
 }
+
+/* Full-width chart for Power Statistics */
+.comparison-charts.full-width {
+    width: 48%; /* Same width as one card */
+    margin: 20px auto; /* Center the chart horizontally */
+    text-align: center; /* Center the text inside the card */
+  }
