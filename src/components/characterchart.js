@@ -1,5 +1,5 @@
 import React from 'react';
-import { Radar, PolarArea, Scatter, Doughnut} from 'react-chartjs-2';
+import { Radar, PolarArea, Scatter, Doughnut } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -12,7 +12,7 @@ import {
   Title,
   Filler,
   Tooltip,
-  Legend
+  Legend,
 } from 'chart.js';
 
 ChartJS.register(
@@ -32,6 +32,9 @@ ChartJS.register(
 export default function CharacterChart({ character, type, allCharacters }) {
   if (!character) return null;
 
+
+  const getFontSize = () => (window.innerWidth < 768 ? 12 : 14);
+
   if (type === 'powerstats') {
     const stats = {
       Intelligence: 90,
@@ -39,7 +42,7 @@ export default function CharacterChart({ character, type, allCharacters }) {
       Speed: 85,
       Durability: 95,
       Power: 98,
-      Combat: 92
+      Combat: 92,
     };
 
     const data = {
@@ -50,29 +53,50 @@ export default function CharacterChart({ character, type, allCharacters }) {
           data: Object.values(stats),
           backgroundColor: 'rgba(255, 193, 7, 0.3)',
           borderColor: '#ffc107',
-          pointBackgroundColor: '#ffc107'
-        }
-      ]
+          pointBackgroundColor: '#ffc107',
+        },
+      ],
     };
 
     const options = {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
-          labels: { color: '#fff' }
-        }
+          labels: {
+            color: '#fff',
+            font: {
+              size: getFontSize(),
+            },
+          },
+        },
       },
       scales: {
         r: {
           angleLines: { color: '#555' },
           grid: { color: '#777' },
-          pointLabels: { color: '#fff' },
-          ticks: { color: '#fff', backdropColor: 'transparent' }
-        }
-      }
+          pointLabels: {
+            color: '#fff',
+            font: {
+              size: getFontSize(),
+            },
+          },
+          ticks: {
+            color: '#fff',
+            backdropColor: 'transparent',
+            font: {
+              size: getFontSize() - 2,
+            },
+          },
+        },
+      },
     };
 
-    return <Radar data={data} options={options} />;
+    return (
+      <div style={{ position: 'relative', height: '400px', width: '100%' }}>
+        <Radar data={data} options={options} />
+      </div>
+    );
   }
 
   if (type === 'appearance') {
@@ -85,36 +109,50 @@ export default function CharacterChart({ character, type, allCharacters }) {
         {
           label: 'Character Heights (cm)',
           data: heights,
-          backgroundColor: ['#ffc107', '#ff6384', '#36a2eb']
-        }
-      ]
+          backgroundColor: ['#ffc107', '#ff6384', '#36a2eb'],
+        },
+      ],
     };
 
     const options = {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
-          labels: { color: '#fff' }
-        }
+          labels: {
+            color: '#fff',
+            font: {
+              size: getFontSize(),
+            },
+          },
+        },
       },
       scales: {
         r: {
           ticks: { color: '#fff', backdropColor: 'transparent' },
-          pointLabels: { color: '#fff' },
-          grid: { color: '#777' }
-        }
-      }
+          pointLabels: {
+            color: '#fff',
+            font: {
+              size: getFontSize(),
+            },
+          },
+          grid: { color: '#777' },
+        },
+      },
     };
 
-    return <PolarArea data={data} options={options} />;
+    return (
+      <div style={{ position: 'relative', height: '400px', width: '100%' }}>
+        <PolarArea data={data} options={options} />
+      </div>
+    );
   }
-
 
   if (type === 'biography') {
     const mockData = [
-      { x: 10, y: 1 }, 
-      { x: 5, y: 2 }, 
-      { x: 50, y: 3 } 
+      { x: 10, y: 1 },
+      { x: 5, y: 2 },
+      { x: 50, y: 3 },
     ];
 
     const data = {
@@ -125,21 +163,30 @@ export default function CharacterChart({ character, type, allCharacters }) {
           backgroundColor: '#36a2eb',
           borderColor: '#36a2eb',
           pointRadius: 6,
-        }
-      ]
+        },
+      ],
     };
 
     const options = {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
-          labels: { color: '#fff' }
+          labels: {
+            color: '#fff',
+            font: {
+              size: getFontSize(),
+            },
+          },
         },
         title: {
           display: true,
           text: 'Biography Summary Chart',
-          color: '#fff'
-        }
+          color: '#fff',
+          font: {
+            size: getFontSize() + 2,
+          },
+        },
       },
       scales: {
         x: {
@@ -148,8 +195,11 @@ export default function CharacterChart({ character, type, allCharacters }) {
           title: {
             display: true,
             text: 'Attribute Value',
-            color: '#fff'
-          }
+            color: '#fff',
+            font: {
+              size: getFontSize(),
+            },
+          },
         },
         y: {
           ticks: { color: '#fff' },
@@ -157,13 +207,20 @@ export default function CharacterChart({ character, type, allCharacters }) {
           title: {
             display: true,
             text: 'Biography Attributes',
-            color: '#fff'
-          }
-        }
-      }
+            color: '#fff',
+            font: {
+              size: getFontSize(),
+            },
+          },
+        },
+      },
     };
 
-    return <Scatter data={data} options={options} />;
+    return (
+      <div style={{ position: 'relative', height: '400px', width: '100%' }}>
+        <Scatter data={data} options={options} />
+      </div>
+    );
   }
 
   if (type === 'work') {
@@ -173,28 +230,40 @@ export default function CharacterChart({ character, type, allCharacters }) {
         {
           label: 'Alter Egos',
           data: [60, 30, 10],
-          backgroundColor: ['#36a2eb', '#ff6384', '#ffcd56']
-        }
-      ]
+          backgroundColor: ['#36a2eb', '#ff6384', '#ffcd56'],
+        },
+      ],
     };
 
     const options = {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
-          labels: { color: '#fff' }
+          labels: {
+            color: '#fff',
+            font: {
+              size: getFontSize(),
+            },
+          },
         },
         title: {
           display: true,
-          text: ' Alter Egos',
-          color: '#fff'
-        }
-      }
+          text: 'Alter Egos',
+          color: '#fff',
+          font: {
+            size: getFontSize() + 2,
+          },
+        },
+      },
     };
 
-    return <Doughnut data={data} options={options} />;
+    return (
+      <div style={{ position: 'relative', height: '400px', width: '100%' }}>
+        <Doughnut data={data} options={options} />
+      </div>
+    );
   }
-
 
   if (type === 'aliases') {
     const mockData = [
@@ -204,7 +273,7 @@ export default function CharacterChart({ character, type, allCharacters }) {
       { x: 50, y: 4 },
       { x: 100, y: 5 },
       { x: 500, y: 6 },
-      { x: 1000, y: 7 }
+      { x: 1000, y: 7 },
     ];
 
     const data = {
@@ -215,21 +284,30 @@ export default function CharacterChart({ character, type, allCharacters }) {
           backgroundColor: '#ff6384',
           borderColor: '#ff6384',
           pointRadius: 6,
-        }
-      ]
+        },
+      ],
     };
 
     const options = {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
-          labels: { color: '#fff' }
+          labels: {
+            color: '#fff',
+            font: {
+              size: getFontSize(),
+            },
+          },
         },
         title: {
           display: true,
           text: 'Character Evolution Timeline (Log Scale)',
-          color: '#fff'
-        }
+          color: '#fff',
+          font: {
+            size: getFontSize() + 2,
+          },
+        },
       },
       scales: {
         x: {
@@ -239,8 +317,11 @@ export default function CharacterChart({ character, type, allCharacters }) {
           title: {
             display: true,
             text: 'Alias Number (Log Scale)',
-            color: '#fff'
-          }
+            color: '#fff',
+            font: {
+              size: getFontSize(),
+            },
+          },
         },
         y: {
           ticks: { color: '#fff' },
@@ -248,13 +329,20 @@ export default function CharacterChart({ character, type, allCharacters }) {
           title: {
             display: true,
             text: 'Evolution Stages',
-            color: '#fff'
-          }
-        }
-      }
+            color: '#fff',
+            font: {
+              size: getFontSize(),
+            },
+          },
+        },
+      },
     };
 
-    return <Scatter data={data} options={options} />;
+    return (
+      <div style={{ position: 'relative', height: '400px', width: '100%' }}>
+        <Scatter data={data} options={options} />
+      </div>
+    );
   }
 
   return <p style={{ color: '#fff' }}>Chart type "{type}" coming soon...</p>;

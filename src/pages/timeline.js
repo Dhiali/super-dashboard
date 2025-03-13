@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import GlowHeader from '../components/glow-header';
 import CharacterChart from '../components/characterchart';
 import './dashboard.css';
-import './comparison.css'; 
+import './comparison.css';
 import infoIcon from '../assets/info.png';
-import './timeline.css'; 
+import './timeline.css';
 
 const TimelinePage = () => {
   const [showInfo, setShowInfo] = useState(false);
@@ -18,7 +18,6 @@ const TimelinePage = () => {
     setSearchQuery(e.target.value);
   };
 
- 
   const selectedCharacter = {
     name: 'Superman',
     image: { url: 'https://www.superherodb.com/pictures2/portraits/10/100/791.jpg' },
@@ -48,9 +47,14 @@ const TimelinePage = () => {
         {showInfo && (
           <div className="info-text">
             <p>
-              <strong>Welcome to the Timeline Page!</strong>
-              Explore the evolution of your favorite superheroes and villains over time.
-              Discover key moments in their history and see how they have changed.
+              <strong>Explore a Superhero’s Journey Over Time</strong>
+              <br /><br />
+              Welcome to the Timeline Page, where you can dive into the history of your favorite
+              superhero/villain. This interactive timeline allows you to explore key milestones,
+              from their first comic book appearance to major transformations, publishers, and alter
+              ego changes. Scroll through time to see how each character has grown, adapted, and shaped
+              their universe. Whether you're tracking a hero’s legacy or uncovering their past, this page
+              brings their story to life in a dynamic and engaging way!
             </p>
           </div>
         )}
@@ -96,8 +100,8 @@ const TimelinePage = () => {
 
       {/* TIMELINE CHART */}
       <div className="timeline-chart">
-        <h4>Character Evolution Timeline</h4>
-        <p>This chart provides a dynamic way to see how the character has developed throughout their history.</p>
+        <h4>Character Timeline</h4>
+        <p>The Character Evolution Timeline provides a dynamic way to see how characters have developed throughout their history.</p>
         <div className="chart-wrapper">
           <CharacterChart character={selectedCharacter} type="aliases" />
         </div>

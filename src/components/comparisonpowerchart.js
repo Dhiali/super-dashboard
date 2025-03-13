@@ -62,22 +62,43 @@ const ComparisonPowerChart = ({ character1, character2 }) => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false, 
     plugins: {
       legend: {
-        labels: { color: '#fff' },
+        labels: {
+          color: '#fff',
+          font: {
+            size: window.innerWidth < 768 ? 12 : 14, 
+          },
+        },
       },
     },
     scales: {
       r: {
         angleLines: { color: '#555' },
         grid: { color: '#777' },
-        pointLabels: { color: '#fff' },
-        ticks: { color: '#fff', backdropColor: 'transparent' },
+        pointLabels: {
+          color: '#fff',
+          font: {
+            size: window.innerWidth < 768 ? 12 : 14, 
+          },
+        },
+        ticks: {
+          color: '#fff',
+          backdropColor: 'transparent',
+          font: {
+            size: window.innerWidth < 768 ? 10 : 12, 
+          },
+        },
       },
     },
   };
 
-  return <Radar data={data} options={options} />;
+  return (
+    <div style={{ position: 'relative', height: '400px', width: '100%' }}>
+      <Radar data={data} options={options} />
+    </div>
+  );
 };
 
 export default ComparisonPowerChart;
