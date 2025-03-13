@@ -243,8 +243,9 @@ export default function Dashboard() {
     </div>
 
     <div className="chart-card">
-      <h3>Appearance Traits</h3>
-      <p>Details on height, weight, gender, and race.</p>
+      <h3>Physical Attributes </h3>
+      <p>The Height Comparison Polar area centered chart visually comparing a selected 
+        superhero’s height against two randomly chosen characters.</p>
       <CharacterChart character={characters[selectedCharacterIndex]} type="appearance" />
     </div>
 

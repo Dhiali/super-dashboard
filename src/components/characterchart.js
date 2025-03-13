@@ -1,65 +1,71 @@
-import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
-import '../pages/dashboard.css';
+import React from 'react';
+import { Radar } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+} from 'chart.js';
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+ChartJS.register(
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+);
 
 export default function CharacterChart({ character, type }) {
-  let labels = [];
-  let dataValues = [];
+  if (!character) return null;
 
-  switch (type) {
-    case 'powerstats':
-      labels = ['Strength', 'Speed', 'Durability', 'Power', 'Combat'];
-      dataValues = [80, 90, 85, 95, 75]; // replace with actual values from API if available
-      break;
-    case 'appearance':
-      labels = ['Gender', 'Race'];
-      dataValues = [
-        character.appearance.gender === 'Male' ? 1 : 0,
-        character.appearance.race === 'Kryptonian' ? 1 : 0,
-      ];
-      break;
-    case 'biography':
-      labels = ['Publisher', 'First Appearance'];
-      dataValues = [1, 1]; // dummy values or assign specific scoring logic
-      break;
-    case 'work':
-      labels = ['Occupation', 'Base'];
-      dataValues = [1, 1]; // again, dummy data or logic-based
-      break;
-    case 'aliases':
-      labels = character.biography.aliases || [];
-      dataValues = character.biography.aliases.map(() => 1); // 1 for each alias
-      break;
-    default:
-      labels = ['No Data'];
-      dataValues = [0];
+  if (type === 'powerstats') {
+    // Simulate powerstats since your current data doesn't include it
+    const stats = {
+      Intelligence: 90,
+      Strength: 100,
+      Speed: 85,
+      Durability: 95,
+      Power: 98,
+      Combat: 92
+    };
+
+    const data = {
+      labels: Object.keys(stats),
+      datasets: [
+        {
+          label: `${character.name}'s Powerstats`,
+          data: Object.values(stats),
+          backgroundColor: 'rgba(255, 193, 7, 0.3)', // Yellow fill
+          borderColor: '#ffc107',
+          pointBackgroundColor: '#ffc107',
+        }
+      ]
+    };
+
+    const options = {
+      responsive: true,
+      plugins: {
+        legend: {
+          labels: { color: '#fff' }
+        }
+      },
+      scales: {
+        r: {
+          angleLines: { color: '#555' },
+          grid: { color: '#777' },
+          pointLabels: { color: '#fff' },
+          ticks: { color: '#fff', backdropColor: 'transparent' }
+        }
+      }
+    };
+
+    return <Radar data={data} options={options} />;
   }
 
-  const chartData = {
-    labels,
-    datasets: [
-      {
-        label: `${type.toUpperCase()} Chart`,
-        data: dataValues,
-        backgroundColor: 'rgba(255, 255, 0, 0.6)',
-        borderColor: 'rgba(255, 255, 0, 1)',
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  const chartOptions = {
-    responsive: true,
-    scales: {
-      y: { beginAtZero: true },
-    },
-  };
-
-  return (
-    <div className="character-chart">
-      <Bar data={chartData} options={chartOptions} />
-    </div>
-  );
+  // Add other chart types (bar, pie, etc.) for other `type` values
+  return <p style={{ color: '#fff' }}>Chart type "{type}" coming soon...</p>;
 }
