@@ -1,4 +1,3 @@
-// src/components/GlowHeader.js
 import React from "react";
 import "./glow-header.css";
 

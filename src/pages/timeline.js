@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import GlowHeader from '../components/glow-header';
 import CharacterChart from '../components/characterchart';
 import './dashboard.css';
-import './comparison.css'; // Import the comparison CSS for consistent styling
+import './comparison.css'; 
 import infoIcon from '../assets/info.png';
-import './timeline.css'; // Separate CSS file for timeline page
+import './timeline.css'; 
 
 const TimelinePage = () => {
   const [showInfo, setShowInfo] = useState(false);
@@ -18,7 +18,7 @@ const TimelinePage = () => {
     setSearchQuery(e.target.value);
   };
 
-  // Mock character data for demonstration purposes
+ 
   const selectedCharacter = {
     name: 'Superman',
     image: { url: 'https://www.superherodb.com/pictures2/portraits/10/100/791.jpg' },
@@ -69,7 +69,7 @@ const TimelinePage = () => {
 
       {/* CHARACTER CARD AND CHARTS */}
       <div className="content-container">
-        <CharacterChart character={selectedCharacter} type="work" className="alter-egos-chart" />
+        {/* Character Card */}
         <div className="comparison-character-card-info">
           <img src="https://i.pinimg.com/736x/d7/b7/ac/d7b7ac5970e78b7a12f8ad51ece24e89.jpg" alt="Character" className="comparison-character-image" />
           <div className="comparison-character-info">
@@ -83,10 +83,25 @@ const TimelinePage = () => {
             <p><strong>Race/Species:</strong> Kryptonian</p>
           </div>
         </div>
+
+        {/* Alter Egos Chart */}
+        <div className="alter-egos-chart">
+          <h4>Alter Egos</h4>
+          <p>This chart shows the different alter egos of the character over time.</p>
+          <div className="chart-wrapper">
+            <CharacterChart character={selectedCharacter} type="work" />
+          </div>
+        </div>
       </div>
 
       {/* TIMELINE CHART */}
-      <CharacterChart character={selectedCharacter} type="aliases" className="timeline-chart" />
+      <div className="timeline-chart">
+        <h4>Character Evolution Timeline</h4>
+        <p>This chart provides a dynamic way to see how the character has developed throughout their history.</p>
+        <div className="chart-wrapper">
+          <CharacterChart character={selectedCharacter} type="aliases" />
+        </div>
+      </div>
     </div>
   );
 };

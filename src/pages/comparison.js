@@ -18,9 +18,9 @@ const Comparison = () => {
     setShowInfo(!showInfo);
   };
 
-  // Mock selected characters for demonstration purposes
-  const selectedCharacter1 = heroes[0]; // Replace with actual logic to get selected character
-  const selectedCharacter2 = heroes[1]; // Replace with actual logic to get selected character
+ 
+  const selectedCharacter1 = heroes[0];
+  const selectedCharacter2 = heroes[1]; 
 
   return (
     <div className="bg-black min-h-screen text-white">

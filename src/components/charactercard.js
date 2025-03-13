@@ -1,4 +1,3 @@
-// src/components/CharacterCard.js
 import React, { useState } from 'react';
 import './charactercard.css';
 

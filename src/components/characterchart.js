@@ -32,7 +32,6 @@ ChartJS.register(
 export default function CharacterChart({ character, type, allCharacters }) {
   if (!character) return null;
 
-  // ----- POWERSTATS (RADAR CHART) -----
   if (type === 'powerstats') {
     const stats = {
       Intelligence: 90,
@@ -76,7 +75,6 @@ export default function CharacterChart({ character, type, allCharacters }) {
     return <Radar data={data} options={options} />;
   }
 
-  // ----- APPEARANCE TRAITS (POLAR AREA CHART) -----
   if (type === 'appearance') {
     const labels = ['Superman', 'Batman', 'Wonder Woman'];
     const heights = [191, 188, 175];
@@ -111,12 +109,12 @@ export default function CharacterChart({ character, type, allCharacters }) {
     return <PolarArea data={data} options={options} />;
   }
 
-  // ----- BIOGRAPHY SUMMARY (SCATTER CHART) -----
+
   if (type === 'biography') {
     const mockData = [
-      { x: 10, y: 1 }, // Mock: Name length
-      { x: 5, y: 2 }, // Mock: Number of aliases
-      { x: 50, y: 3 } // Mock: Issue number of first appearance
+      { x: 10, y: 1 }, 
+      { x: 5, y: 2 }, 
+      { x: 50, y: 3 } 
     ];
 
     const data = {
@@ -197,7 +195,7 @@ export default function CharacterChart({ character, type, allCharacters }) {
     return <Doughnut data={data} options={options} />;
   }
 
-  // ----- CHARACTER EVOLUTION TIMELINE (LOG SCALE SCATTER CHART) -----
+
   if (type === 'aliases') {
     const mockData = [
       { x: 1, y: 1 },

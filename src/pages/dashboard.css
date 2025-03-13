@@ -5,7 +5,7 @@
     padding: 40px 60px;
   }
   
-  /* Default Bubble: Small box around just the icon */
+  
   .info-bubble {
     margin-top: 10px;
     margin-left: 60px;
@@ -13,33 +13,33 @@
     align-items: center;
     border: 2px solid pink;
     border-radius: 25px;
-    padding: 10px 15px; /* small padding initially */
+    padding: 10px 15px; 
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: rgba(255, 255, 255, 0.05);
     max-width: fit-content;
   }
   
-  /* Expanded state: when info is shown */
+
   .info-bubble.expanded {
     padding: 25px 35px;
     max-width: 900px;
   }
   
-  /* Info Icon */
+
   .info-icon-inside-bubble {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
-    margin-right: 0; /* no space until expanded */
+    margin-right: 0; 
   }
   
-  /* Add spacing only when info is shown */
+  
   .info-bubble.expanded .info-icon-inside-bubble {
     margin-right: 20px;
   }
   
-  /* Info Text */
+  
   .info-text {
     padding-left: 10px;
     color: white;
@@ -51,11 +51,11 @@
     max-width: 100%;
   }
   
-  /* Optional hover effect */
+  
   .info-bubble:hover {
     box-shadow: 0 0 10px pink;
   }
-  /* Fade-in animation */
+ 
 @keyframes fadeIn {
     from {
       opacity: 0;
@@ -67,7 +67,7 @@
     }
   }
   
-  /* Info text fade-in effect */
+  
   .info-text {
     flex: 1;
     padding-left: 10px;
@@ -81,14 +81,14 @@
     animation: fadeIn 0.5s ease forwards;
   }
   
-  /* Optional: smoother margin shift for layout below */
+ 
   .dashboard-content-wrapper {
     transition: all 0.3s ease;
   }
   
-  /* Heading under info bubble */
+ 
 .dashboard-heading {
-    margin-top: 60px; /* Always 10px below the bubble */
+    margin-top: 60px; 
     color: rgb(255, 255, 255);
     font-size: 22px;
     font-weight: bold;
@@ -98,7 +98,7 @@
     transition: margin-top 0.3s ease;
   }
   
-  /* dashboard.css */
+ 
   .card-scroll-container {
     display: flex;
     overflow-x: auto;
@@ -110,28 +110,28 @@
     cursor: grab;
   }
   
-  /* Hide scrollbar - cross-browser */
+ 
   .card-scroll-container::-webkit-scrollbar {
     display: none;
   }
   
   .card-scroll-container {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;     /* Firefox */
+    -ms-overflow-style: none; 
+    scrollbar-width: none;     
   }
 
   .character-charts-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-columns: repeat(2, 1fr); 
     gap: 20px;
     margin-top: 40px;
     padding: 0 40px;
   }
   
   .character-charts-grid > div:nth-child(5) {
-    grid-column: 1 / 3; /* This makes the last chart span both columns */
+    grid-column: 1 / 3;
     justify-self: center;
-    width: 60%; /* Optional - to center it nicely */
+    width: 60%; 
   }
   
   .chart-card {
@@ -146,7 +146,7 @@
     margin-top: 0;
     font-size: 20px;
     color: #ffffff;
-    text-align: center; /* Yellow heading */
+    text-align: center; 
   }
   
   .chart-card p {
@@ -156,14 +156,14 @@
     text-align: center;
   }
   
-  /* Make the last chart full width (aliases) and center it */
+
   .chart-card.full-width {
     grid-column: 1 / 3;
     width: 100%;
   }
 
   .chart-wrapper {
-    height: 300px; /* or try 400px */
+    height: 300px; 
     position: relative;
   }
   

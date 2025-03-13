@@ -3,7 +3,7 @@ import Navbar from './components/navbar';
 import Dashboard from './pages/dashboard';
 import Comparison from './pages/comparison';
 import Timeline from './pages/timeline';
-import './App.css'; // or App.css depending on where you put the background-color
+import './App.css'; 
 
 
 export default function App() {
