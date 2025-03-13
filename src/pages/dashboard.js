@@ -207,7 +207,18 @@ export default function Dashboard() {
         {showInfo && (
           <div className="info-text">
             <p>
-              <strong>Welcome to FaceOff!</strong> {/* You can add full content here */}
+              <strong>Welcome to FaceOff!</strong> Welcome to FaceOff! FaceOff is your ultimate superhero showdown platform, where you can compare the mightiest heroes and villains from across the comic book multiverse. Whether you're a die-hard comic book fan or a data enthusiast, our interactive visualizations
+               let you explore and analyze superhero stats like never before.
+               <br /><br />
+               Powered by the SuperHero API, FaceOff brings you a rich dataset featuring over 700 characters from Marvel, DC Comics, 
+               and beyond. This API provides in-depth details on each superhero and villain, including power stats like 
+               intelligence, strength, speed, durability, power, and combat skills. You can also explore biographical 
+               information such as real names, aliases, and first comic appearances, along with physical attributes like
+                height, weight, race, and more. The dataset also includes team affiliations, relationships with other 
+                characters, and high-quality images for each hero and villain.
+                <br /><br />
+                FaceOff allows you to compare characters side by side, track their abilities over time, and uncover fascinating insights into the world of superheroes. Choose your fighter, analyze their strengths, and see how they 
+                stack up against the competition as you dive into the ultimate superhero data experience!
             </p>
           </div>
         )}
@@ -235,35 +246,38 @@ export default function Dashboard() {
        {/*  ADD THIS BLOCK BELOW CHARACTER CARDS */}
        {selectedCharacterIndex !== null && (
         <div className="character-charts-grid">
-          <div className="chart-card">
-      <h3>Powerstats</h3>
-      <p>This chart provides a quick, at-a-glance representation of strengths, 
-        making it easy to compare heroes and villains based on their unique power profiles.</p>
-      <CharacterChart character={characters[selectedCharacterIndex]} type="powerstats" />
-    </div>
+         <div className="chart-card">
+  <h4>Power Statistics</h4>
+  <p>This chart provides a quick, at-a-glance representation of strengths, making it easy to compare heroes and villains based on their unique power profiles.</p>
+  <CharacterChart character={characters[selectedCharacterIndex]} type="powerstats" />
+</div>
+
+<div className="chart-card">
+  <h4>Physical Attributes </h4>
+  <p>The Height Comparison Chart visually comparing a selected superhero’s height against two randomly chosen characters.</p>
+  <CharacterChart
+    character={characters[selectedCharacterIndex]}
+    type="appearance"
+    allCharacters={characters}
+  />
+</div>
+
 
     <div className="chart-card">
-      <h3>Physical Attributes </h3>
-      <p>The Height Comparison Polar area centered chart visually comparing a selected 
-        superhero’s height against two randomly chosen characters.</p>
-      <CharacterChart character={characters[selectedCharacterIndex]} type="appearance" />
-    </div>
-
-    <div className="chart-card">
-      <h3>Biography Summary</h3>
-      <p>Core identity and backstory of the character.</p>
+      <h4>Group Affiliations & Relationships </h4>
+      <p>This visualization highlights how characters are linked within their universe, revealing key alliances, rivalries, and team dynamics at a glance.</p>
       <CharacterChart character={characters[selectedCharacterIndex]} type="biography" />
     </div>
 
     <div className="chart-card">
-      <h3>Work Details</h3>
-      <p>Explore the character's base and occupation.</p>
+      <h4>Timeline - Alter Egos</h4>
+      <p>The First Appearance card allows users to explore superhero debuts across different eras.</p>
       <CharacterChart character={characters[selectedCharacterIndex]} type="work" />
     </div>
 
     <div className="chart-card full-width">
-      <h3>Aliases</h3>
-      <p>Alternate names and code names used by the character.</p>
+      <h4>Timeline</h4>
+      <p>The Character Evolution Timeline provides a dynamic way to see how characters have developed throughout their history.</p>
       <CharacterChart character={characters[selectedCharacterIndex]} type="aliases" />
     </div>
         </div>
