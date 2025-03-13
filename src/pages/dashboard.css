@@ -134,3 +134,30 @@
     width: 60%; /* Optional - to center it nicely */
   }
   
+  .chart-card {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+  
+  .chart-card h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #ffc107;
+    text-align: center; /* Yellow heading */
+  }
+  
+  .chart-card p {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  /* Make the last chart full width (aliases) and center it */
+  .chart-card.full-width {
+    grid-column: 1 / 3;
+    width: 100%;
+  }

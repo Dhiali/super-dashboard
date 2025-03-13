@@ -235,11 +235,36 @@ export default function Dashboard() {
        {/*  ADD THIS BLOCK BELOW CHARACTER CARDS */}
        {selectedCharacterIndex !== null && (
         <div className="character-charts-grid">
-          <CharacterChart character={characters[selectedCharacterIndex]} type="powerstats" />
-          <CharacterChart character={characters[selectedCharacterIndex]} type="appearance" />
-          <CharacterChart character={characters[selectedCharacterIndex]} type="biography" />
-          <CharacterChart character={characters[selectedCharacterIndex]} type="work" />
-          <CharacterChart character={characters[selectedCharacterIndex]} type="aliases" />
+          <div className="chart-card">
+      <h3>Powerstats</h3>
+      <p>This chart provides a quick, at-a-glance representation of strengths, 
+        making it easy to compare heroes and villains based on their unique power profiles.</p>
+      <CharacterChart character={characters[selectedCharacterIndex]} type="powerstats" />
+    </div>
+
+    <div className="chart-card">
+      <h3>Appearance Traits</h3>
+      <p>Details on height, weight, gender, and race.</p>
+      <CharacterChart character={characters[selectedCharacterIndex]} type="appearance" />
+    </div>
+
+    <div className="chart-card">
+      <h3>Biography Summary</h3>
+      <p>Core identity and backstory of the character.</p>
+      <CharacterChart character={characters[selectedCharacterIndex]} type="biography" />
+    </div>
+
+    <div className="chart-card">
+      <h3>Work Details</h3>
+      <p>Explore the character's base and occupation.</p>
+      <CharacterChart character={characters[selectedCharacterIndex]} type="work" />
+    </div>
+
+    <div className="chart-card full-width">
+      <h3>Aliases</h3>
+      <p>Alternate names and code names used by the character.</p>
+      <CharacterChart character={characters[selectedCharacterIndex]} type="aliases" />
+    </div>
         </div>
         )}
       </div>
