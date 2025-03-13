@@ -1,97 +1,94 @@
-import React from "react";
-import { Line } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  LineElement,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  Legend,
-  Tooltip,
-  Filler
-} from "chart.js";
+import React, { useState } from 'react';
+import GlowHeader from '../components/glow-header';
+import CharacterChart from '../components/characterchart';
+import './dashboard.css';
+import './comparison.css'; // Import the comparison CSS for consistent styling
+import infoIcon from '../assets/info.png';
+import './timeline.css'; // Separate CSS file for timeline page
 
-import heroes from "../data/heroes";
-import GlowHeader from "../components/glow-header";
+const TimelinePage = () => {
+  const [showInfo, setShowInfo] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
-ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Legend, Tooltip, Filler);
-
-const Timeline = () => {
-  const chartData = {
-    labels: heroes.map((h) => h.name),
-    datasets: [
-      {
-        label: "Power",
-        data: heroes.map((h) => h.power),
-        borderColor: "#ff4ec4", // neon pink
-        backgroundColor: "rgba(255, 78, 196, 0.1)",
-        tension: 0.5,
-        fill: true,
-        pointBackgroundColor: "#ff4ec4",
-        pointRadius: 5,
-        borderWidth: 3,
-      },
-      {
-        label: "Speed",
-        data: heroes.map((h) => h.speed),
-        borderColor: "#ffd700", // neon yellow
-        backgroundColor: "rgba(255, 215, 0, 0.1)",
-        tension: 0.5,
-        fill: true,
-        pointBackgroundColor: "#ffd700",
-        pointRadius: 5,
-        borderWidth: 3,
-      },
-    ],
+  const toggleInfo = () => {
+    setShowInfo(!showInfo);
   };
 
-  const chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      x: {
-        ticks: {
-          color: "#ffffff",
-          font: { size: 16, weight: "bold" },
-        },
-        grid: { color: "rgba(255,255,255,0.1)" },
-      },
-      y: {
-        ticks: {
-          color: "#ffffff",
-          font: { size: 16, weight: "bold" },
-        },
-        grid: { color: "rgba(255,255,255,0.1)" },
-      },
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  // Mock character data for demonstration purposes
+  const selectedCharacter = {
+    name: 'Superman',
+    image: { url: 'https://www.superherodb.com/pictures2/portraits/10/100/791.jpg' },
+    biography: {
+      'full-name': 'Clark Kent',
+      aliases: ['Kal-El', 'Man of Steel'],
+      publisher: 'DC Comics',
+      'first-appearance': 'Action Comics #1',
     },
-    plugins: {
-      legend: {
-        labels: {
-          color: "#ffffff",
-          font: { size: 18, weight: "bold" },
-        },
-      },
-      tooltip: {
-        backgroundColor: "#1f1f1f",
-        titleFont: { size: 16 },
-        bodyFont: { size: 14 },
-      },
+    work: {
+      occupation: 'Journalist',
+      base: 'Metropolis',
+    },
+    appearance: {
+      gender: 'Male',
+      race: 'Kryptonian',
     },
   };
 
   return (
-    <div className="bg-black min-h-screen text-white">
+    <div className="timeline-page">
       <GlowHeader />
-      <div className="p-10 max-w-7xl mx-auto">
-        <h2 className="text-pink-500 text-4xl font-extrabold mb-6 text-center">
-          Hero Timeline
-        </h2>
-        <div className="h-[600px] bg-[#0a0a0a] p-6 rounded-2xl shadow-2xl border border-pink-500">
-          <Line data={chartData} options={chartOptions} />
+
+      {/* INFO BUBBLE */}
+      <div className={`info-bubble ${showInfo ? 'expanded' : ''}`} onClick={toggleInfo}>
+        <img src={infoIcon} alt="Info Icon" className="info-icon-inside-bubble" />
+        {showInfo && (
+          <div className="info-text">
+            <p>
+              <strong>Welcome to the Timeline Page!</strong>
+              Explore the evolution of your favorite superheroes and villains over time.
+              Discover key moments in their history and see how they have changed.
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* SEARCH BAR */}
+      <div className="comparison-search-container">
+        <input
+          type="text"
+          placeholder="Search for a character"
+          className="comparison-search-input full-width"
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+      </div>
+
+      {/* CHARACTER CARD AND CHARTS */}
+      <div className="content-container">
+        <CharacterChart character={selectedCharacter} type="work" className="alter-egos-chart" />
+        <div className="comparison-character-card-info">
+          <img src="https://i.pinimg.com/736x/d7/b7/ac/d7b7ac5970e78b7a12f8ad51ece24e89.jpg" alt="Character" className="comparison-character-image" />
+          <div className="comparison-character-info">
+            <p><strong>Full Name:</strong> Clark Kent</p>
+            <p><strong>Aliases:</strong> Kal-El, Man of Steel</p>
+            <p><strong>Publisher:</strong> DC Comics</p>
+            <p><strong>First Appearance:</strong> Action Comics #1</p>
+            <p><strong>Occupation:</strong> Journalist</p>
+            <p><strong>Base:</strong> Metropolis</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Race/Species:</strong> Kryptonian</p>
+          </div>
         </div>
       </div>
+
+      {/* TIMELINE CHART */}
+      <CharacterChart character={selectedCharacter} type="aliases" className="timeline-chart" />
     </div>
   );
 };
 
-export default Timeline;
+export default TimelinePage;

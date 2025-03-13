@@ -1,0 +1,31 @@
+.timeline-page {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .content-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to the next line if needed */
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 20px; /* Add spacing between the character card and the chart */
+  }
+  
+  .comparison-character-card-info {
+    flex: 1;
+    min-width: 40%; /* Ensure it takes at least 40% of the width */
+    max-width: 48%; /* Maximum width to prevent overflow */
+  }
+  
+  .alter-egos-chart {
+    flex: 1;
+    min-width: 1%; /* Ensure it takes at least 40% of the width */
+    max-width: 1%; /* Maximum width to prevent overflow */
+  }
+  
+  .timeline-chart {
+    margin-top: 20px;
+  }
+  
+  /* Add any additional styles specific to the timeline page here */
+  
