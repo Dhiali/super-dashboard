@@ -119,4 +119,18 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;     /* Firefox */
   }
+
+  .character-charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px;
+    margin-top: 40px;
+    padding: 0 40px;
+  }
+  
+  .character-charts-grid > div:nth-child(5) {
+    grid-column: 1 / 3; /* This makes the last chart span both columns */
+    justify-self: center;
+    width: 60%; /* Optional - to center it nicely */
+  }
   
