@@ -31,6 +31,16 @@
   border-top: 1px solid #ff007f;
 }
 
+.character-name {
+  color: #ff007f;
+  font-size: 18px;
+  margin: 0 0 10px 0;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px solid #ff007f;
+  padding-bottom: 5px;
+}
 
 @media (max-width: 768px) {
   .character-card {
@@ -46,6 +56,10 @@
 
   .character-info {
     font-size: 12px;
+  }
+
+  .character-name {
+    font-size: 16px;
   }
 }
 
@@ -64,5 +78,9 @@
 
   .character-info {
     font-size: 11px;
+  }
+
+  .character-name {
+    font-size: 14px;
   }
 }
