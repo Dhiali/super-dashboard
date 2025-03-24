@@ -30,7 +30,7 @@ ChartJS.register(
 );
 
 export default function CharacterChart({ character, type, allCharacters }) {
-  // Add state to store comparison characters
+  // Move useState before any conditional returns
   const [comparisonChars] = React.useState(() => {
     if (!allCharacters || !character) return [];
     return allCharacters
@@ -39,7 +39,22 @@ export default function CharacterChart({ character, type, allCharacters }) {
       .slice(0, 2);
   });
 
-  if (!character) return null;
+  // Early return with placeholder if no character data
+  if (!character || !character.biography) {
+    return (
+      <div style={{ position: 'relative', height: '400px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <p style={{ color: '#fff' }}>No character data available</p>
+      </div>
+    );
+  }
+
+  // Add null checks and default values for biography properties
+  const biography = character.biography || {};
+  const firstAppearance = biography['first-appearance'] || 'Unknown';
+  const placeOfBirth = biography['place-of-birth'] || 'Unknown';
+  const aliases = biography.aliases || [];
+  const work = character.work || {};
+  const occupation = work.occupation || '';
 
   const getFontSize = () => (window.innerWidth < 768 ? 12 : 14);
 
@@ -383,33 +398,33 @@ export default function CharacterChart({ character, type, allCharacters }) {
       // Birth/Origin event
       {
         year: 'Origin',
-        event: character.biography['place-of-birth'],
+        event: placeOfBirth,
         order: 1,
         type: 'birth'
       },
       // First Appearance
       {
-        year: character.biography['first-appearance'],
-        event: `First appeared in ${character.biography['first-appearance']}`,
+        year: firstAppearance,
+        event: `First appeared in ${firstAppearance}`,
         order: 2,
         type: 'debut',
-        actualYear: parseInt(character.biography['first-appearance']?.match(/\d{4}/)?.[0]) || 1900
+        actualYear: parseInt(firstAppearance.match(/\d{4}/)?.[0]) || 1900
       },
       // Aliases over time
-      ...(character.biography.aliases || []).map((alias, index) => ({
-        year: character.biography['first-appearance'],
+      ...aliases.map((alias, index) => ({
+        year: firstAppearance,
         event: `Alias: ${alias}`,
         order: 3 + index,
         type: 'alias',
-        actualYear: parseInt(character.biography['first-appearance']?.match(/\d{4}/)?.[0]) + (index * 2) || 1900 + (index * 2)
+        actualYear: parseInt(firstAppearance.match(/\d{4}/)?.[0]) + (index * 2) || 1900 + (index * 2)
       })),
       // Work history
-      ...(character.work.occupation || '').split(',').map((job, index) => ({
-        year: character.biography['first-appearance'],
+      ...occupation.split(',').map((job, index) => ({
+        year: firstAppearance,
         event: `Career: ${job.trim()}`,
-        order: 3 + (character.biography.aliases?.length || 0) + index,
+        order: 3 + (aliases.length || 0) + index,
         type: 'work',
-        actualYear: parseInt(character.biography['first-appearance']?.match(/\d{4}/)?.[0]) + (index * 3) || 1900 + (index * 3)
+        actualYear: parseInt(firstAppearance.match(/\d{4}/)?.[0]) + (index * 3) || 1900 + (index * 3)
       }))
     ].filter(event => event.event && event.event !== 'null' && event.event !== '-');
 

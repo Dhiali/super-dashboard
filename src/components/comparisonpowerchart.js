@@ -20,39 +20,46 @@ ChartJS.register(
 );
 
 const ComparisonPowerChart = ({ character1, character2 }) => {
-  if (!character1 || !character2) return null;
-
-  const stats1 = {
-    Intelligence: 90,
-    Strength: 100,
-    Speed: 85,
-    Durability: 95,
-    Power: 98,
-    Combat: 92,
+  // Add default data if characters are undefined
+  const defaultStats = {
+    intelligence: "50",
+    strength: "50",
+    speed: "50",
+    durability: "50",
+    power: "50",
+    combat: "50"
   };
 
-  const stats2 = {
-    Intelligence: 80,
-    Strength: 90,
-    Speed: 80,
-    Durability: 85,
-    Power: 88,
-    Combat: 82,
-  };
+  const char1Stats = character1?.powerstats || defaultStats;
+  const char2Stats = character2?.powerstats || defaultStats;
 
   const data = {
-    labels: Object.keys(stats1),
+    labels: ['Intelligence', 'Strength', 'Speed', 'Durability', 'Power', 'Combat'],
     datasets: [
       {
-        label: `${character1.name}'s Powerstats`,
-        data: Object.values(stats1),
+        label: `${character1?.name || 'Character 1'}'s Powerstats`,
+        data: [
+          parseInt(char1Stats.intelligence) || 0,
+          parseInt(char1Stats.strength) || 0,
+          parseInt(char1Stats.speed) || 0,
+          parseInt(char1Stats.durability) || 0,
+          parseInt(char1Stats.power) || 0,
+          parseInt(char1Stats.combat) || 0
+        ],
         backgroundColor: 'rgba(255, 193, 7, 0.3)',
         borderColor: '#ffc107',
         pointBackgroundColor: '#ffc107',
       },
       {
-        label: `${character2.name}'s Powerstats`,
-        data: Object.values(stats2),
+        label: `${character2?.name || 'Character 2'}'s Powerstats`,
+        data: [
+          parseInt(char2Stats.intelligence) || 0,
+          parseInt(char2Stats.strength) || 0,
+          parseInt(char2Stats.speed) || 0,
+          parseInt(char2Stats.durability) || 0,
+          parseInt(char2Stats.power) || 0,
+          parseInt(char2Stats.combat) || 0
+        ],
         backgroundColor: 'rgba(75, 192, 192, 0.3)',
         borderColor: '#4caf50',
         pointBackgroundColor: '#4caf50',
