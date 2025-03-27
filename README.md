@@ -49,6 +49,12 @@ npm start
 
 The idea was to create an immersive superhero comparison platform where users can analyze and compare their favorite characters through interactive data visualizations.
 
+## Wireframes
+
+![Wireframe](https://github.com/JugheadStudio/Github-assets/blob/main/Datamon/wireframes.png)
+
+
+
 Dashboard Page: Displays a list of top superheroes and villains with interactive character cards.
 Comparison Page: Allows users to compare two characters side by side with various charts.
 Timeline Page: Provides an interactive timeline for exploring a character's history and alter egos.
