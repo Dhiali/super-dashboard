@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import GlowHeader from '../components/glow-header';
 import CharacterCard from '../components/charactercard';
 import CharacterChart from '../components/characterchart';
@@ -11,6 +11,10 @@ export default function Dashboard() {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [selectedCharacterIndex, setSelectedCharacterIndex] = useState(null);
   const [showInfo, setShowInfo] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const cardContainerRef = useRef(null);
 
   useEffect(() => {
     const fetchPowerfulCharacters = async () => {
@@ -118,6 +122,28 @@ export default function Dashboard() {
     setSelectedCharacterIndex(index === selectedCharacterIndex ? null : index);
   };
 
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - cardContainerRef.current.offsetLeft);
+    setScrollLeft(cardContainerRef.current.scrollLeft);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - cardContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    cardContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   return (
     <div className="dashboard-container">
       <GlowHeader />
@@ -128,17 +154,17 @@ export default function Dashboard() {
         {showInfo && (
           <div className="info-text">
             <p>
-              <strong>Welcome to FaceOff!</strong> Welcome to FaceOff! FaceOff is your ultimate superhero showdown platform, where you can compare the mightiest heroes and villains from across the comic book multiverse. Whether you're a die-hard comic book fan or a data enthusiast, our interactive visualizations
+              <strong>Welcome to FaceOff!</strong> FaceOff is your ultimate superhero and villain showdown platform, where you can compare the mightiest heroes and villains from across the comic book multiverse. Whether you're a die-hard comic book fan or a data enthusiast, our interactive visualizations
                let you explore and analyze superhero stats like never before.
                <br /><br />
-               Powered by the SuperHero API, FaceOff brings you a rich dataset featuring over 700 characters from Marvel, DC Comics, 
+               Powered by the SuperHero API, FaceOff brings you a rich dataset featuring over 700 characters from Marvel, DC Comics 
                and beyond. This API provides in-depth details on each superhero and villain, including power stats like 
-               intelligence, strength, speed, durability, power, and combat skills. You can also explore biographical 
-               information such as real names, aliases, and first comic appearances, along with physical attributes like
-                height, weight, race, and more. The dataset also includes team affiliations, relationships with other 
-                characters, and high-quality images for each hero and villain.
+               intelligence, strength, speed, durability, power and combat skills. You can also explore biographical 
+               information such as real names, aliases and first comic appearances, along with physical attributes like
+                height, weight, race and more. The dataset also includes team affiliations, relationships with other 
+                characters and high-quality images for each hero and villain.
                 <br /><br />
-                FaceOff allows you to compare characters side by side, track their abilities over time, and uncover fascinating insights into the world of superheroes. Choose your fighter, analyze their strengths, and see how they 
+                FaceOff allows you to compare characters side by side, track their abilities over time and uncover fascinating insights into the world of superheroes. Choose your fighter, analyze their strengths and see how they 
                 stack up against the competition as you dive into the ultimate superhero data experience!
             </p>
           </div>
@@ -146,7 +172,7 @@ export default function Dashboard() {
       </div>
 
       {/* HEADING */}
-      <div className="dashboard-content-wrapper">
+      <div className={`dashboard-content-wrapper ${showInfo ? "info-expanded" : ""}`}>
         <h2 className="dashboard-heading">
           Browse the Elite: The Top 5% Most Powerful Superheroes & Villains
         </h2>
@@ -162,12 +188,19 @@ export default function Dashboard() {
             </div>
           </div>
         ) : (
-          <div className="card-scroll-container" id="card-scroll">
+          <div 
+            className="card-scroll-container" 
+            ref={cardContainerRef}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
+            onMouseMove={handleMouseMove}
+          >
             {characters.map((character, index) => (
               <div
                 className={`card-wrapper ${index === selectedCharacterIndex ? 'active-card' : ''}`}
                 key={character.id}
-                onClick={() => handleCardClick(index)}
+                onClick={() => !isDragging && handleCardClick(index)}
               >
                 <CharacterCard character={character} />
               </div>
@@ -179,14 +212,16 @@ export default function Dashboard() {
        {selectedCharacterIndex !== null && (
         <div className="character-charts-grid">
          <div className="chart-card">
-  <h4>Power Statistics</h4>
-  <p>This chart provides a quick, at-a-glance representation of strengths, making it easy to compare heroes and villains based on their unique power profiles.</p>
+         <h4>Power Statistics</h4>
+                <p>This chart provides a quick representation of strengths, making it easy to compare characters based on their unique power profiles.</p>
+               <p><b>Hover over a dot...</b></p>
   <CharacterChart character={characters[selectedCharacterIndex]} type="powerstats" />
 </div>
 
 <div className="chart-card">
-  <h4>Physical Attributes </h4>
-  <p>The Height Comparison Chart visually comparing a selected superhero’s height against two randomly chosen characters.</p>
+<h4>Physical Attributes</h4>
+                <p>This Height Comparison Chart visually compares a selected characters height against two random characters.</p>
+                <p><b>Try clicking on name...</b></p>
   <CharacterChart
     character={characters[selectedCharacterIndex]}
     type="appearance"
@@ -196,20 +231,23 @@ export default function Dashboard() {
 
 
     <div className="chart-card">
-      <h4>Group Affiliations & Relationships </h4>
-      <p>This visualization highlights how characters are linked within their universe, revealing key alliances, rivalries, and team dynamics at a glance.</p>
+    <h4>Group Affiliations & Relationships</h4>
+                <p>This visualization highlights how characters are linked within their universe revealing key alliances, rivalries and team dynamics at a glance.</p>
+                <p><b>Hover over a dot...</b></p>
       <CharacterChart character={characters[selectedCharacterIndex]} type="biography" />
     </div>
 
     <div className="chart-card">
-      <h4>Timeline - Alter Egos</h4>
-      <p>The First Appearance card allows users to explore superhero debuts across different eras.</p>
+    <h4>Alter Egos</h4>
+              <p>This chart shows the different alter egos of the character over time.</p>
+              <p><b>Hover over section..</b></p>
       <CharacterChart character={characters[selectedCharacterIndex]} type="work" />
     </div>
 
     <div className="chart-card full-width">
-      <h4>Timeline</h4>
-      <p>The Character Evolution Timeline provides a dynamic way to see how characters have developed throughout their history.</p>
+    <h4>Character Timeline</h4>
+            <p>The Character Evolution Timeline provides a dynamic way to see how characters have developed throughout their history.</p>
+            <p><b>Hover over dots..</b></p>
       <CharacterChart character={characters[selectedCharacterIndex]} type="aliases" />
     </div>
         </div>

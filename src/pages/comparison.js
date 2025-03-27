@@ -98,142 +98,147 @@ const Comparison = () => {
     <div className="bg-black min-h-screen text-white">
       <GlowHeader />
 
-      <div className={`info-bubble ${showInfo ? "expanded" : ""}`} onClick={toggleInfo}>
+      <div className={`info-cbubble ${showInfo ? "expanded" : ""}`} onClick={toggleInfo}>
         <img src={infoIcon} alt="Info Icon" className="info-icon-inside-bubble" />
         {showInfo && (
           <div className="info-text">
             <p>
-              <strong>Compare Superheroes Like Never Before!</strong>
+              <strong>Compare Characters Like Never Before!</strong>
               <br /><br />
-Welcome to the Comparison Page, where you can pit your favorite superheroes against each other and analyze their strengths, abilities, and physical attributes side by side. Using interactive charts, you can compare power stats, height, weight, and more, gaining a deeper understanding of how these characters stack up. Whether you’re debating who would win in a fight or simply exploring superhero dynamics, this page provides a visual and data-driven way to settle the score. Select your characters and let the showdown begin! 
+Welcome to the Comparison Page, where you can put your favorite characters against each other and analyze their strengths, abilities and physical attributes side by side. Using interactive charts, you can compare power stats, height, weight and more, gaining a deeper understanding of how these characters stack up. Whether you’re debating who would win in a fight or simply exploring superhero dynamics, this page provides a visual and data-driven way to settle the score. Type in your characters and let the showdown begin! 
             </p>
           </div>
         )}
       </div>
 
-      <div className="comparison-search-container side-by-side">
-        <div className="search-wrapper">
-          <input
-            type="text"
-            placeholder="Search for Hero 1"
-            className="comparison-search-input left-input"
-            value={searchHero1}
-            onChange={(e) => handleSearch(e.target.value, true)}
-          />
-          {searchResults1.length > 0 && (
-            <div className="search-results">
-              {searchResults1.map(char => (
-                <div 
-                  key={char.id}
-                  className="search-result-item"
-                  onClick={() => selectCharacter(char, true)}
-                >
-                  {char.name}
-                </div>
-              ))}
+      <div className={`comparison-content-wrapper ${showInfo ? "info-expanded" : ""}`}>
+        <div className="comparison-search-container side-by-side">
+          <div className="search-wrapper">
+            <input
+              type="text"
+              placeholder="Search for Hero 1"
+              className="comparison-search-input left-input"
+              value={searchHero1}
+              onChange={(e) => handleSearch(e.target.value, true)}
+            />
+            {searchResults1.length > 0 && (
+              <div className="search-results">
+                {searchResults1.map(char => (
+                  <div 
+                    key={char.id}
+                    className="search-result-item"
+                    onClick={() => selectCharacter(char, true)}
+                  >
+                    {char.name}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="search-wrapper">
+            <input
+              type="text"
+              placeholder="Search for Hero 2"
+              className="comparison-search-input right-input"
+              value={searchHero2}
+              onChange={(e) => handleSearch(e.target.value, false)}
+            />
+            {searchResults2.length > 0 && (
+              <div className="search-results">
+                {searchResults2.map(char => (
+                  <div 
+                    key={char.id}
+                    className="search-result-item"
+                    onClick={() => selectCharacter(char, false)}
+                  >
+                    {char.name}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="comparison-cards-container side-by-side">
+          {!selectedChar1 ? (
+            <div className="comparison-character-card-info">Loading...</div>
+          ) : (
+            <div className="comparison-character-card-info">
+              <img src={selectedChar1.image.url} alt={selectedChar1.name} className="comparison-character-image" />
+              <div className="comparison-character-info">
+                <p><strong>Full Name:</strong> {selectedChar1.biography['full-name']}</p>
+                <p><strong>Aliases:</strong> {selectedChar1.biography.aliases.join(', ')}</p>
+                <p><strong>Publisher:</strong> {selectedChar1.biography.publisher}</p>
+                <p><strong>First Appearance:</strong> {selectedChar1.biography['first-appearance']}</p>
+                <p><strong>Occupation:</strong> {selectedChar1.work.occupation}</p>
+                <p><strong>Base:</strong> {selectedChar1.work.base}</p>
+                <p><strong>Gender:</strong> {selectedChar1.appearance.gender}</p>
+                <p><strong>Race/Species:</strong> {selectedChar1.appearance.race}</p>
+              </div>
+            </div>
+          )}
+
+          {!selectedChar2 ? (
+            <div className="comparison-character-card-info">Loading...</div>
+          ) : (
+            <div className="comparison-character-card-info">
+              <img src={selectedChar2.image.url} alt={selectedChar2.name} className="comparison-character-image" />
+              <div className="comparison-character-info">
+                <p><strong>Full Name:</strong> {selectedChar2.biography['full-name']}</p>
+                <p><strong>Aliases:</strong> {selectedChar2.biography.aliases.join(', ')}</p>
+                <p><strong>Publisher:</strong> {selectedChar2.biography.publisher}</p>
+                <p><strong>First Appearance:</strong> {selectedChar2.biography['first-appearance']}</p>
+                <p><strong>Occupation:</strong> {selectedChar2.work.occupation}</p>
+                <p><strong>Base:</strong> {selectedChar2.work.base}</p>
+                <p><strong>Gender:</strong> {selectedChar2.appearance.gender}</p>
+                <p><strong>Race/Species:</strong> {selectedChar2.appearance.race}</p>
+              </div>
             </div>
           )}
         </div>
 
-        <div className="search-wrapper">
-          <input
-            type="text"
-            placeholder="Search for Hero 2"
-            className="comparison-search-input right-input"
-            value={searchHero2}
-            onChange={(e) => handleSearch(e.target.value, false)}
-          />
-          {searchResults2.length > 0 && (
-            <div className="search-results">
-              {searchResults2.map(char => (
-                <div 
-                  key={char.id}
-                  className="search-result-item"
-                  onClick={() => selectCharacter(char, false)}
-                >
-                  {char.name}
+        {selectedChar1 && selectedChar2 && (
+          <>
+            <div className="character-charts-grid">
+              <div className="chart-card">
+                <h4>Power Statistics</h4>
+                <p>This chart provides a quick representation of strengths, making it easy to compare characters based on their unique power profiles.</p>
+               <p><b>Hover over a dot...</b></p>
+                <ComparisonPowerChart character1={selectedChar1} character2={selectedChar2} />
+              </div>
+
+              <div className="chart-card">
+                <h4>Physical Attributes</h4>
+                <p>This Height Comparison Chart visually compares a selected characters height against two random characters.</p>
+                <p><b>Try clicking on name...</b></p>
+                <div className="side-by-side-charts">
+                  <CharacterChart
+                    character={selectedChar1}
+                    type="appearance"
+                    allCharacters={heroes}
+                  />
+                  <CharacterChart
+                    character={selectedChar2}
+                    type="appearance"
+                    allCharacters={heroes}
+                  />
                 </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
+              </div>
 
-      <div className="comparison-cards-container side-by-side">
-        {!selectedChar1 ? (
-          <div className="comparison-character-card-info">Loading...</div>
-        ) : (
-          <div className="comparison-character-card-info">
-            <img src={selectedChar1.image.url} alt={selectedChar1.name} className="comparison-character-image" />
-            <div className="comparison-character-info">
-              <p><strong>Full Name:</strong> {selectedChar1.biography['full-name']}</p>
-              <p><strong>Aliases:</strong> {selectedChar1.biography.aliases.join(', ')}</p>
-              <p><strong>Publisher:</strong> {selectedChar1.biography.publisher}</p>
-              <p><strong>First Appearance:</strong> {selectedChar1.biography['first-appearance']}</p>
-              <p><strong>Occupation:</strong> {selectedChar1.work.occupation}</p>
-              <p><strong>Base:</strong> {selectedChar1.work.base}</p>
-              <p><strong>Gender:</strong> {selectedChar1.appearance.gender}</p>
-              <p><strong>Race/Species:</strong> {selectedChar1.appearance.race}</p>
-            </div>
-          </div>
-        )}
-
-        {!selectedChar2 ? (
-          <div className="comparison-character-card-info">Loading...</div>
-        ) : (
-          <div className="comparison-character-card-info">
-            <img src={selectedChar2.image.url} alt={selectedChar2.name} className="comparison-character-image" />
-            <div className="comparison-character-info">
-              <p><strong>Full Name:</strong> {selectedChar2.biography['full-name']}</p>
-              <p><strong>Aliases:</strong> {selectedChar2.biography.aliases.join(', ')}</p>
-              <p><strong>Publisher:</strong> {selectedChar2.biography.publisher}</p>
-              <p><strong>First Appearance:</strong> {selectedChar2.biography['first-appearance']}</p>
-              <p><strong>Occupation:</strong> {selectedChar2.work.occupation}</p>
-              <p><strong>Base:</strong> {selectedChar2.work.base}</p>
-              <p><strong>Gender:</strong> {selectedChar2.appearance.gender}</p>
-              <p><strong>Race/Species:</strong> {selectedChar2.appearance.race}</p>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {selectedChar1 && selectedChar2 && (
-        <>
-          <div className="character-charts-grid">
-            <div className="chart-card">
-              <h4>Power Statistics</h4>
-              <p>This chart provides a quick, at-a-glance representation of strengths, making it easy to compare heroes and villains based on their unique power profiles.</p>
-              <ComparisonPowerChart character1={selectedChar1} character2={selectedChar2} />
-            </div>
-
-            <div className="chart-card">
-              <h4>Physical Attributes</h4>
-              <p>The Height Comparison Chart visually comparing a selected superhero's height against two randomly chosen characters.</p>
-              <div className="side-by-side-charts">
-                <CharacterChart
-                  character={selectedChar1}
-                  type="appearance"
-                  allCharacters={heroes}
-                />
-                <CharacterChart
-                  character={selectedChar2}
-                  type="appearance"
-                  allCharacters={heroes}
-                />
+              <div className="chart-card">
+                <h4>Group Affiliations & Relationships</h4>
+                <p>This visualization highlights how characters are linked within their universe revealing key alliances, rivalries and team dynamics at a glance.</p>
+                <p><b>Hover over a dot...</b></p>
+                <div className="side-by-side-charts">
+                  <CharacterChart character={selectedChar1} type="biography" />
+                  <CharacterChart character={selectedChar2} type="biography" />
+                </div>
               </div>
             </div>
-
-            <div className="chart-card">
-              <h4>Group Affiliations & Relationships</h4>
-              <p>This visualization highlights how characters are linked within their universe, revealing key alliances, rivalries, and team dynamics at a glance.</p>
-              <div className="side-by-side-charts">
-                <CharacterChart character={selectedChar1} type="biography" />
-                <CharacterChart character={selectedChar2} type="biography" />
-              </div>
-            </div>
-          </div>
-        </>
-      )}
+          </>
+        )}
+      </div>
     </div>
   );
 };

@@ -30,6 +30,34 @@ ChartJS.register(
 );
 
 export default function CharacterChart({ character, type, allCharacters }) {
+  // Add state for random comparison characters
+  const [randomChars, setRandomChars] = React.useState([]);
+
+  // Add useEffect to fetch random characters when component mounts
+  React.useEffect(() => {
+    if (type === 'appearance') {
+      const fetchRandomCharacters = async () => {
+        try {
+          // Generate two random IDs between 1 and 731 (total characters in API)
+          const randomIds = Array.from({ length: 2 }, () => Math.floor(Math.random() * 731) + 1);
+          
+          const chars = await Promise.all(
+            randomIds.map(async (id) => {
+              const response = await fetch(`https://www.superheroapi.com/api.php/8ded20877f9a17e2095ab692c039d13a/${id}`);
+              return response.json();
+            })
+          );
+          
+          setRandomChars(chars.filter(char => char.response !== 'error'));
+        } catch (error) {
+          console.error('Error fetching random characters:', error);
+        }
+      };
+
+      fetchRandomCharacters();
+    }
+  }, [type, character.id]);
+
   // Move useState before any conditional returns
   const [comparisonChars] = React.useState(() => {
     if (!allCharacters || !character) return [];
@@ -148,16 +176,16 @@ export default function CharacterChart({ character, type, allCharacters }) {
       {
         name: character.name,
         height: getHeight(character),
-        color: '#ffc107'
+        color: '#A020F0'
       },
       {
-        name: comparisonChars[0]?.name || 'Average Human',
-        height: comparisonChars[0] ? getHeight(comparisonChars[0]) : 170,
-        color: '#ff6384'
+        name: randomChars[0]?.name || 'Average Human',
+        height: randomChars[0] ? getHeight(randomChars[0]) : 170,
+        color: '#ff6389'
       },
       {
-        name: comparisonChars[1]?.name || 'Tall Human',
-        height: comparisonChars[1] ? getHeight(comparisonChars[1]) : 185,
+        name: randomChars[1]?.name || 'Tall Human',
+        height: randomChars[1] ? getHeight(randomChars[1]) : 185,
         color: '#36a2eb'
       }
     ];
@@ -229,14 +257,14 @@ export default function CharacterChart({ character, type, allCharacters }) {
       datasets: [{
         label: 'Relationship Duration',
         data: connectionData.map(data => data.duration),
-        borderColor: '#36a2eb',
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: '#ff007f', // Changed to pink
+        backgroundColor: 'rgba(207, 22, 115, 0.44)', // Pink with transparency
         tension: 0.4,
         fill: true,
         pointStyle: 'circle',
         pointRadius: 8,
         pointHoverRadius: 12,
-        pointBackgroundColor: '#36a2eb',
+        pointBackgroundColor: '#ff007f', // Pink points
         pointBorderColor: '#fff',
         pointBorderWidth: 2
       }]
@@ -263,7 +291,7 @@ export default function CharacterChart({ character, type, allCharacters }) {
         },
         title: {
           display: true,
-          text: 'Character Connections Timeline',
+          text: `${character.name}'s Connection Diagram`, // Changed title to use character name
           color: '#fff',
           font: {
             family: '"Tw Cen MT", sans-serif',
@@ -342,37 +370,24 @@ export default function CharacterChart({ character, type, allCharacters }) {
       maintainAspectRatio: false,
       plugins: {
         legend: {
-          position: 'top', // Changed from 'right' to 'top'
+          display: true,
+          position: 'top',
           align: 'center',
           labels: {
-            color: '#white',
-            font: { 
-              family: '"Tw Cen MT", sans-serif', // Match dashboard font
-              size: getFontSize() 
+            color: '#ffffff',
+            font: {
+              family: '"Tw Cen MT", sans-serif',
+              size: 10, // Reduced font size
+              weight: '300'
             },
-            padding: 20,
-            generateLabels: (chart) => {
-              return chart.data.labels.map((label, i) => ({
-                text: label,
-                fillStyle: aliasData[i].color,
-                strokeStyle: aliasData[i].color,
-                lineWidth: 1,
-                hidden: false,
-                index: i
-              }));
-            }
-          }
+            padding: 5, // Reduced padding
+            boxWidth: 10, // Reduced box width
+            usePointStyle: true, // Use point style for more compact look
+          },
+          maxHeight: 80 // Limit legend height
         },
         title: {
-          display: true,
-          text: 'Character Aliases Timeline',
-          color: '#fff',
-          font: { 
-            family: '"Tw Cen MT", sans-serif',
-            size: getFontSize() + 2,
-            weight: 'bold'
-          },
-          padding: { bottom: 20 }
+          display: false // Remove title since we have legend now
         },
         tooltip: {
           callbacks: {
@@ -386,8 +401,17 @@ export default function CharacterChart({ character, type, allCharacters }) {
     };
 
     return (
-      <div style={{ position: 'relative', height: '400px', width: '100%' }}>
-        <Doughnut data={data} options={options} />
+      <div style={{ 
+        position: 'relative', 
+        height: '100%', 
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center', // Added to center horizontally
+        alignItems: 'center',
+      }}>
+        <div style={{ width: '100%', height: '400px' }}> {/* Changed from flexBasis to width */}
+          <Doughnut data={data} options={options} />
+        </div>
       </div>
     );
   }
@@ -431,7 +455,7 @@ export default function CharacterChart({ character, type, allCharacters }) {
     const eventColors = {
       birth: '#ff6384',    // Pink
       debut: '#36a2eb',    // Blue
-      alias: '#ffcd56',    // Yellow
+      alias: '#FF0000',    // Yellow
       work: '#4bc0c0'      // Teal
     };
 

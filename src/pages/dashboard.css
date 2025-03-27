@@ -1,4 +1,7 @@
 .dashboard-container {
+  font-family: "Tw Cen MT";
+  position: relative;
+  z-index: 1; /* Lower z-index than info bubble */
   background-color: black;
   color: white;
   min-height: 100vh;
@@ -7,22 +10,29 @@
 
 /* Info Bubble */
 .info-bubble {
-  margin-top: 10px;
-  margin-left: 20px; 
+  position: absolute;
+  top: 125px;
+  left: 52.5%;
+  transform: translateX(-50%);
+  z-index: 9999;
   display: flex;
+  flex-direction: column;
   align-items: center;
   border: 2px solid pink;
   border-radius: 25px;
-  padding: 10px 15px;
+  padding: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.05);
-  max-width: fit-content;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 44px; /* Width of icon + padding */
 }
 
+
+
 .info-bubble.expanded {
-  padding: 20px 30px; 
-  max-width: 90%; 
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
 }
 
 .info-icon-inside-bubble {
@@ -39,7 +49,7 @@
 .info-text {
   padding-left: 10px;
   color: white;
-  font-size: 14px;
+  font-size: 20px;  /* Increased from 14px */
   line-height: 1.6;
   text-align: center;
   font-family: "Tw Cen MT";
@@ -66,7 +76,7 @@
   flex: 1;
   padding-left: 10px;
   color: white;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   text-align: center;
   font-family: "Tw Cen MT";
@@ -107,7 +117,16 @@
 }
 
 .dashboard-content-wrapper {
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
+  margin-top: 80px; /* Reduced from 150px */
+  padding-top: 20px;
+  position: relative;
+  z-index: 1;
+  font-family: "Tw Cen MT";
+}
+
+.dashboard-content-wrapper.info-expanded {
+  margin-top: 450px; /* Reduced from 300px */
 }
 
 .dashboard-heading {
@@ -121,7 +140,6 @@
   transition: margin-top 0.3s ease;
 }
 
-
 .card-scroll-container {
   display: flex;
   overflow-x: auto;
@@ -131,6 +149,24 @@
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   cursor: grab;
+  user-select: none;
+}
+
+.card-scroll-container:active {
+  cursor: grabbing;
+}
+
+.card-wrapper {
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.card-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+.card-wrapper.active-card {
+  transform: translateY(-10px);
 }
 
 .card-scroll-container::-webkit-scrollbar {
@@ -141,7 +177,6 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
 
 .character-charts-grid {
   display: grid;
@@ -157,41 +192,40 @@
   width: 80%; 
 }
 
-
 .chart-card {
   background-color: #1a1a1a;
   border-radius: 12px;
   padding: 15px; 
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
   color: #fff;
+  font-family: "Tw Cen MT";
+  font-weight: 400;
 }
 
 .chart-card h4 {
   margin-top: 0;
-  font-size: 18px; 
+  font-size: 40px; 
   color: #ffffff;
   text-align: center;
 }
 
 .chart-card p {
-  font-size: 12px; 
+  font-size: 18px; 
   color: #ccc;
   margin-bottom: 10px; 
   text-align: center;
+  font-family: "Tw Cen MT";
 }
-
 
 .chart-card.full-width {
   grid-column: 1 / 3;
   width: 100%;
 }
 
-
 .chart-wrapper {
   height: 250px; 
   position: relative;
 }
-
 
 @media (max-width: 768px) {
   .dashboard-container {
@@ -230,7 +264,7 @@
   }
 
   .chart-card p {
-    font-size: 12px; 
+    font-size: 16px; 
   }
 
   .chart-wrapper {
@@ -256,7 +290,7 @@
   }
 
   .chart-card p {
-    font-size: 10px; 
+    font-size: 16px; 
   }
 
   .chart-wrapper {
