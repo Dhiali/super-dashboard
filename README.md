@@ -38,11 +38,11 @@ npm start
 
 | Home Page | Compare Page | Timeline Page |
 | :--- | :--- | :--- |
-| Pokemon details overview | Compare Pokemon Details | Pokemon details overview |
-| Pokemon base Stats in a bar chart | Compare Pokemon base stats | Pokemon evolution chain |
-| Pokemon base EV values in a radar chart | Compare pokemon base EV values | Pokemon growth rate |
-| Pokemon weakness table | Compare Pokemon total base stats |  |
-| Pokemon growth rate |  |  |
+| Character Gallery | Dual Search System | Character Evolution |
+| Global Statistics | Character Cards | Interactive Timeline |
+| Featured Character | Visualization Charts | Publisher History |
+| Visualization Charts |  |  |
+| Interactive Info Bubble |  |  |
 
 
 Dashboard Page: Displays a list of top superheroes and villains with interactive character cards.
