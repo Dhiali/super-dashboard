@@ -2,10 +2,10 @@
   <img src="https://github.com/Dhiali/super-dashboard/blob/main/src/assets/fo%202.3.png?raw=true" width="150">
 </p>
  
- **FaceOff - Superhero Power Comparison API** 
-# About Datamon
+# FaceOff - Superhero Power Comparison API
 
-Datamon is an app built using [PokeAPI](https://pokeapi.co/), which is a database of everything you would need to create a website with comprehensive information on anything pokemon related, from every pokemon, all the typings, all the items etc. I used the dataset to create a visual representation of every Pokemon's stats, typings, weaknesses to other typings, the evolution chain and what every Pokemon's base stats are.
+FaceOff is an interactive data visualization platform that brings superhero and villain statistics to life through dynamic, engaging charts and comparisons. Built with React and powered by the SuperHero API(https://pokeapi.co/), this application allows users to explore over 700 characters from various comic book universes including Marvel, DC and more. Users can browse through the most powerful characters in the dashboard, compare any two characters head-to-head in the comparison view or dive deep into a character's history and evolution in the timeline section. Each view offers unique interactive visualizations including radar charts for power statistics, polar area charts for physical attributes, relationship networks and chronological timelines. Whether you're a comic book enthusiast seeking to settle debates about character abilities, a data visualization fan interested in creative ways to present information or just curious about superhero statistics, FaceOff provides an engaging platform to explore and analyze superhero data in ways never seen before.
+
 
 
 Dashboard Page: Displays a list of top superheroes and villains with interactive character cards.
