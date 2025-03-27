@@ -192,41 +192,4 @@
   }
 }
 
-@media (max-width: 480px) {
-  .comparison-character-card-info {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .comparison-character-image {
-    max-width: 150px;
-  }
-
-  .comparison-character-info {
-    padding-left: 0;
-  }
-
-  .alter-egos-chart h4,
-  .timeline-chart h4 {
-    font-size: 18px;
-  }
-
-  .alter-egos-chart p,
-  .timeline-chart p {
-    font-size: 12px;
-  }
-
-  .timeline-page.info-expanded {
-    padding-top: 400px;
-  }
-
-  .timeline-chart {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .chart-wrapper {
-    height: 250px;
-  }
-}
+/* Remove all @media (max-width: 480px) styles */

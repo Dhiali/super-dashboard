@@ -7,6 +7,7 @@ import heroes from "../data/heroes";
 import infoIcon from "../assets/info.png";
 import "./dashboard.css";
 import "./comparison.css";
+import axios from 'axios';
 
 const Comparison = () => {
   const [searchHero1, setSearchHero1] = useState("");
@@ -16,6 +17,9 @@ const Comparison = () => {
   const [selectedChar1, setSelectedChar1] = useState(null);
   const [selectedChar2, setSelectedChar2] = useState(null);
   const [showInfo, setShowInfo] = useState(false);
+  const [sideSearches, setSideSearches] = useState({ left: '', right: '' });
+  const [searchResults, setSearchResults] = useState({ left: [], right: [] });
+  const [selectedCharacters, setSelectedCharacters] = useState({ left: null, right: null });
   const location = useLocation();
 
   // Fetch default characters on component mount
@@ -47,46 +51,56 @@ const Comparison = () => {
     setShowInfo(!showInfo);
   };
 
-  const searchCharacter = async (query, isFirstHero) => {
+  const handleSearchChange = async (e, side) => {
+    const query = e.target.value;
+    if (side === 'left') {
+      setSearchHero1(query);
+    } else {
+      setSearchHero2(query);
+    }
+    
     if (query.length < 2) {
-      isFirstHero ? setSearchResults1([]) : setSearchResults2([]);
+      if (side === 'left') {
+        setSearchResults1([]);
+      } else {
+        setSearchResults2([]);
+      }
       return;
     }
 
     try {
-      const response = await fetch(`https://www.superheroapi.com/api.php/8ded20877f9a17e2095ab692c039d13a/search/${query}`);
-      const data = await response.json();
-      const results = data.results || [];
-      isFirstHero ? setSearchResults1(results) : setSearchResults2(results);
+      const { data } = await axios.get(
+        `https://www.superheroapi.com/api.php/8ded20877f9a17e2095ab692c039d13a/search/${query}`
+      );
+      
+      if (side === 'left') {
+        setSearchResults1(data.results || []);
+      } else {
+        setSearchResults2(data.results || []);
+      }
     } catch (error) {
-      console.error('Search error:', error);
-      isFirstHero ? setSearchResults1([]) : setSearchResults2([]);
-    }
-  };
-
-  const handleSearch = (value, isFirstHero) => {
-    if (isFirstHero) {
-      setSearchHero1(value);
-      searchCharacter(value, true);
-    } else {
-      setSearchHero2(value);
-      searchCharacter(value, false);
-    }
-  };
-
-  const selectCharacter = async (character, isFirstHero) => {
-    try {
-      // Fetch full character details when selected
-      const response = await fetch(`https://www.superheroapi.com/api.php/8ded20877f9a17e2095ab692c039d13a/${character.id}`);
-      const fullCharacter = await response.json();
-
-      if (isFirstHero) {
-        setSelectedChar1(fullCharacter);
-        setSearchHero1(fullCharacter.name);
+      console.error('Error searching characters:', error);
+      if (side === 'left') {
         setSearchResults1([]);
       } else {
-        setSelectedChar2(fullCharacter);
-        setSearchHero2(fullCharacter.name);
+        setSearchResults2([]);
+      }
+    }
+  };
+
+  const handleCharacterSelect = async (character, side) => {
+    try {
+      const { data } = await axios.get(
+        `https://www.superheroapi.com/api.php/8ded20877f9a17e2095ab692c039d13a/${character.id}`
+      );
+      
+      if (side === 'left') {
+        setSelectedChar1(data);
+        setSearchHero1(character.name);
+        setSearchResults1([]);
+      } else {
+        setSelectedChar2(data);
+        setSearchHero2(character.name);
         setSearchResults2([]);
       }
     } catch (error) {
@@ -119,7 +133,7 @@ Welcome to the Comparison Page, where you can put your favorite characters again
               placeholder="Search for Hero 1"
               className="comparison-search-input left-input"
               value={searchHero1}
-              onChange={(e) => handleSearch(e.target.value, true)}
+              onChange={(e) => handleSearchChange(e, 'left')}
             />
             {searchResults1.length > 0 && (
               <div className="search-results">
@@ -127,7 +141,7 @@ Welcome to the Comparison Page, where you can put your favorite characters again
                   <div 
                     key={char.id}
                     className="search-result-item"
-                    onClick={() => selectCharacter(char, true)}
+                    onClick={() => handleCharacterSelect(char, 'left')}
                   >
                     {char.name}
                   </div>
@@ -142,7 +156,7 @@ Welcome to the Comparison Page, where you can put your favorite characters again
               placeholder="Search for Hero 2"
               className="comparison-search-input right-input"
               value={searchHero2}
-              onChange={(e) => handleSearch(e.target.value, false)}
+              onChange={(e) => handleSearchChange(e, 'right')}
             />
             {searchResults2.length > 0 && (
               <div className="search-results">
@@ -150,7 +164,7 @@ Welcome to the Comparison Page, where you can put your favorite characters again
                   <div 
                     key={char.id}
                     className="search-result-item"
-                    onClick={() => selectCharacter(char, false)}
+                    onClick={() => handleCharacterSelect(char, 'right')}
                   >
                     {char.name}
                   </div>

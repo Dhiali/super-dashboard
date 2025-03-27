@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import GlowHeader from '../components/glow-header';
 import CharacterChart from '../components/characterchart';
 import './dashboard.css';
@@ -14,17 +15,18 @@ const TimelinePage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch Joker as default character
     const fetchJoker = async () => {
+      setLoading(true);
       try {
-        const response = await fetch('https://www.superheroapi.com/api.php/8ded20877f9a17e2095ab692c039d13a/search/Joker');
-        const data = await response.json();
+        const { data } = await axios.get(
+          'https://www.superheroapi.com/api.php/8ded20877f9a17e2095ab692c039d13a/search/Joker'
+        );
         if (data.results && data.results.length > 0) {
           setSelectedCharacter(data.results[0]);
         }
-        setLoading(false);
       } catch (error) {
         console.error('Error fetching Joker:', error);
+      } finally {
         setLoading(false);
       }
     };
@@ -45,8 +47,9 @@ const TimelinePage = () => {
     }
 
     try {
-      const response = await fetch(`https://www.superheroapi.com/api.php/8ded20877f9a17e2095ab692c039d13a/search/${query}`);
-      const data = await response.json();
+      const { data } = await axios.get(
+        `https://www.superheroapi.com/api.php/8ded20877f9a17e2095ab692c039d13a/search/${query}`
+      );
       setSearchResults(data.results || []);
     } catch (error) {
       console.error('Error searching characters:', error);

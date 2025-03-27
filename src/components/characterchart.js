@@ -14,6 +14,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import axios from 'axios';
 
 ChartJS.register(
   RadialLinearScale,
@@ -41,14 +42,13 @@ export default function CharacterChart({ character, type, allCharacters }) {
           // Generate two random IDs between 1 and 731 (total characters in API)
           const randomIds = Array.from({ length: 2 }, () => Math.floor(Math.random() * 731) + 1);
           
-          const chars = await Promise.all(
-            randomIds.map(async (id) => {
-              const response = await fetch(`https://www.superheroapi.com/api.php/8ded20877f9a17e2095ab692c039d13a/${id}`);
-              return response.json();
-            })
+          const responses = await Promise.all(
+            randomIds.map(id => 
+              axios.get(`https://www.superheroapi.com/api.php/8ded20877f9a17e2095ab692c039d13a/${id}`)
+            )
           );
           
-          setRandomChars(chars.filter(char => char.response !== 'error'));
+          setRandomChars(responses.map(res => res.data).filter(char => char.response !== 'error'));
         } catch (error) {
           console.error('Error fetching random characters:', error);
         }
