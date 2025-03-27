@@ -53,7 +53,15 @@ The idea was to create an immersive superhero comparison platform where users ca
 
 ![Wireframe](https://github.com/Dhiali/super-dashboard/blob/main/src/assets/wireframess.png?raw=true)
 
+## Development Process
 
+### Highlights
+Highlights of my page are definitely my search bar and my evolution chain, I think these added features really gives a nice user experience and a nice flow to the website
+
+### Challenges
+This was my first react project and I made some beginner mistakes by having each component making it's own api calls to [PokeAPI](https://pokeapi.co/) and some of the other components were dependant on the information from other components. I Had to rewrite almost all of my code to have all the api calls in one file that passes the data into an array, which made it a lot easier to get the data I needed, this allowed me to just import the data file into each component and use only what I needed. None of the components were dependant on each other.
+
+Another main challenge I had was with regards to the search bar and the evolution chain. Some pokemon names had '-' high-fins in their names and I made a function that splits then name and only used the first part of the name. Later on in my build, this made issues where my search bar was dependent on having the full name to access the correct api link and this was essential for my evolution chain as well as loading the data for the Pokemon that the user searches for. To fix this issue, I rewrote all my code for my search bar and started by pushing the full name with the high-fins to my array and then a modified version of the names that had only the name.
 
 Dashboard Page: Displays a list of top superheroes and villains with interactive character cards.
 Comparison Page: Allows users to compare two characters side by side with various charts.
