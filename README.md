@@ -51,7 +51,7 @@ The idea was to create an immersive superhero comparison platform where users ca
 
 ## Wireframes
 
-![Wireframe](https://github.com/JugheadStudio/Github-assets/blob/main/Datamon/wireframes.png)
+![Wireframe](https://github.com/Dhiali/super-dashboard/blob/main/src/assets/wireframess.png?raw=true)
 
 
 
