@@ -4,6 +4,7 @@ import CharacterCard from '../components/charactercard';
 import CharacterChart from '../components/characterchart';
 import './dashboard.css';
 import infoIcon from '../assets/info.png';
+import axios from 'axios';
 
 export default function Dashboard() {
   const [characters, setCharacters] = useState([]);
@@ -18,96 +19,34 @@ export default function Dashboard() {
 
   useEffect(() => {
     const fetchPowerfulCharacters = async () => {
+      setLoading(true);
       try {
-        // Reduced initial fetch to 50 characters for faster loading
-        const characterIds = Array.from({ length: 300 }, (_, i) => i + 1);
-        const totalCharacters = characterIds.length;
-        let loadedCount = 0;
-
-        const results = await Promise.all(
-          characterIds.map(async (id) => {
-            try {
-              const response = await fetch(`https://www.superheroapi.com/api.php/8ded20877f9a17e2095ab692c039d13a/${id}`);
-              if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-              const data = await response.json();
-              loadedCount++;
-              setLoadingProgress(Math.floor((loadedCount / totalCharacters) * 100));
-              return data;
-            } catch (error) {
-              loadedCount++;
-              setLoadingProgress(Math.floor((loadedCount / totalCharacters) * 100));
-              return null;
-            }
-          })
+        // Fetch first 30 characters to find the most powerful ones
+        const requests = Array.from({ length: 30 }, (_, i) => 
+          axios.get(`https://www.superheroapi.com/api.php/8ded20877f9a17e2095ab692c039d13a/${i + 1}`)
         );
-
-        // Filter valid results
-        const validResults = results.filter(char => 
-          char !== null && 
-          char.powerstats &&
-          char.image?.url &&
-          !char.image.url.includes('null')
-        );
-
-        // Calculate power scores with adjusted weights
-        const charactersWithPowerScore = validResults.map(char => {
+        
+        const responses = await Promise.all(requests);
+        const allCharacters = responses.map(res => res.data);
+        
+        // Calculate power level for each character
+        const charactersWithPower = allCharacters.map(char => {
           const stats = char.powerstats;
-          const powerValues = Object.entries(stats).map(([key, value]) => {
-            const numValue = value === "null" ? 0 : parseInt(value);
-            // Adjusted weights to better reflect overall power
-            const weights = {
-              strength: 1.2,
-              power: 1.3,
-              combat: 1.1,
-              durability: 1.2,
-              speed: 1.1,
-              intelligence: 1.0
-            };
-            return numValue * (weights[key.toLowerCase()] || 1);
-          });
-          
-          const totalPower = powerValues.reduce((sum, val) => sum + val, 0);
-          return {
-            ...char,
-            powerScore: totalPower
-          };
+          const totalPower = Object.values(stats).reduce((sum, stat) => 
+            sum + (parseInt(stat) || 0), 0);
+          return { ...char, totalPower };
         });
 
-        // Sort by power score and get top characters
-        const sortedCharacters = charactersWithPowerScore
-          .sort((a, b) => b.powerScore - a.powerScore);
-        
-        // Get top 15 characters instead of top 5%
-        const topCharacters = sortedCharacters.slice(0, 15);
-        
-        console.log('Top powerful characters:', topCharacters);
-        setCharacters(topCharacters);
-        setLoading(false);
+        // Sort by total power and get top 10 (approximately top 5% of fetched characters)
+        const powerfulCharacters = charactersWithPower
+          .sort((a, b) => b.totalPower - a.totalPower)
+          .slice(0, 12); // Get top 12 characters
+
+        setCharacters(powerfulCharacters);
       } catch (error) {
-        console.error('Error fetching characters:', error);
+        console.error('Error fetching powerful characters:', error);
+      } finally {
         setLoading(false);
-        // Fallback to Superman if API fails completely
-        setCharacters([{
-          id: 1,
-          name: "Superman",
-          image: { url: 'https://www.superherodb.com/pictures2/portraits/10/100/791.jpg' },
-          biography: {
-            'full-name': 'Clark Kent',
-            aliases: ['Man of Steel'],
-            publisher: 'DC Comics',
-            'first-appearance': 'Action Comics #1'
-          },
-          work: { occupation: 'Reporter', base: 'Metropolis' },
-          appearance: { gender: 'Male', race: 'Kryptonian' },
-          powerstats: {
-            intelligence: "90",
-            strength: "100",
-            speed: "100",
-            durability: "100",
-            power: "100",
-            combat: "85"
-          }
-        }]);
       }
     };
 
