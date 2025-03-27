@@ -51,70 +51,20 @@ The idea was to create an immersive superhero comparison platform where users ca
 
 ## Wireframes
 
-![Wireframe](https://github.com/JugheadStudio/Github-assets/blob/main/Datamon/wireframes.png)
+![Wireframe](https://github.com/Dhiali/super-dashboard/blob/main/src/assets/wireframess.png?raw=true)
 
+## Development Process
 
+### Highlights
+The development process prioritized user experience, implementing a dual search system that allows real-time character comparison. The interactive radar charts became a standout feature, displaying power statistics in an intuitive format. We integrated smooth transitions and glowing effects to enhance the comic-book aesthetic, while maintaining responsive design principles for optimal viewing across devices. The information bubble feature provides context and guidance, making the platform accessible to both casual fans and dedicated comic enthusiasts.
 
-Dashboard Page: Displays a list of top superheroes and villains with interactive character cards.
-Comparison Page: Allows users to compare two characters side by side with various charts.
-Timeline Page: Provides an interactive timeline for exploring a character's history and alter egos.
-Responsive Design: Ensures the application looks good and functions well on different devices and screen sizes.
-Setup Instructions
-Prerequisites
-Node.js and npm installed on your machine.
-Basic knowledge of React and CSS.
-Steps to Set Up the Project
-Clone the Repository
+### Challenges
+One of the primary challenges involved managing API calls efficiently. Initially, we faced performance issues due to multiple components making independent API calls. We resolved this by implementing a centralized API handling system that manages data fetching and distribution. State management presented another significant challenge, particularly with the dual search system. We overcame this by implementing a consolidated state management approach using React's useState hook, which improved component communication and reduced unnecessary re-renders. Tablet responsiveness required careful consideration, especially for the chart components. We addressed this through CSS media queries and flexible layouts that adapt to different screen sizes while maintaining functionality.
 
-Copy
-git clone <repository-url>
-cd superhero-dashboard
-Install Dependencies
+Throughout the development, we gained valuable insights into efficient API integration, state management patterns and responsive design principles. The project highlighted the importance of planning component architecture before implementation and the benefits of centralized data management. Future improvements could include implementing a caching system for frequently accessed character data, expanding the comparison metrics and adding more interactive features like character relationship networks. The development process has established a solid foundation for future enhancements while maintaining the core goal of providing an engaging platform for superhero comparison.
 
-Copy
-npm install
-Start the Development Server
-
-Copy
-npm start
-This will start the development server and open the application in your default web browser.
-
-Project Structure
-src/components: Contains reusable React components used throughout the application.
-src/pages: Contains the main pages of the application (Dashboard, Comparison, Timeline).
-src/css: Contains CSS files for styling the application.
-src/data: Contains sample data for superheroes and villains.
-Making the Website Responsive
-To ensure the website is responsive, the following approaches were taken:
-
-Flexbox and Grid Layouts: Utilized Flexbox and CSS Grid to create flexible and responsive layouts that adapt to different screen sizes.
-
-Media Queries: Implemented media queries to adjust the layout and styles for different screen sizes. The breakpoints used are:
-
-max-width: 1200px: Adjust layout for medium to large screens.
-max-width: 768px: Adjust layout for tablets and smaller screens.
-max-width: 480px: Adjust layout for mobile devices.
-Relative Units: Used relative units like percentages (%) and viewport width (vw) to ensure elements scale appropriately across different devices.
-
-Responsive Images: Ensured images scale properly on different screen sizes by setting max-width: 100% and height: auto.
-
-Overflow Handling: Added overflow: hidden to ensure content stays within its container and does not overflow.
-
-Custom Components
-GlowHeader: A reusable header component with a glowing effect.
-CharacterCard: A component to display character information.
-CharacterChart: A component to display various charts related to a character.
-ComparisonPowerChart: A component to compare the power statistics of two characters.
-CSS Files
-dashboard.css: Styles for the dashboard page.
-comparison.css: Styles for the comparison page.
-timeline.css: Styles for the timeline page.
-Future Enhancements
-Implement more interactive features and animations.
-Add more detailed charts and visualizations.
-Improve accessibility features.
-Contributing
-Feel free to fork the repository and submit pull requests with improvements or new features. Please ensure to update the documentation as needed.
+## Demonstration
+[Link To Demonstration Video](https://drive.google.com/file/d/1I742FZpZOqmFGzcIrO6VR4KwbS5fdRv7/view?usp=sharing)
 
 License
 This project is licensed under the MIT License.
