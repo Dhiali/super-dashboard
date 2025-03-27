@@ -236,6 +236,10 @@ Welcome to the Comparison Page, where you can put your favorite characters again
                 </div>
               </div>
             </div>
+            <br></br>
+            <br></br>
+            <br></br>
+            
           </>
         )}
       </div>

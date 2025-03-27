@@ -200,6 +200,7 @@
   color: #fff;
   font-family: "Tw Cen MT";
   font-weight: 400;
+  
 }
 
 .chart-card h4 {
@@ -207,6 +208,7 @@
   font-size: 40px; 
   color: #ffffff;
   text-align: center;
+
 }
 
 .chart-card p {
@@ -215,6 +217,7 @@
   margin-bottom: 10px; 
   text-align: center;
   font-family: "Tw Cen MT";
+
 }
 
 .chart-card.full-width {
@@ -223,8 +226,17 @@
 }
 
 .chart-wrapper {
+
   height: 250px; 
   position: relative;
+}
+
+@media (max-width: 1200px) {
+  .character-charts-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 0 15px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -270,6 +282,19 @@
   .chart-wrapper {
     height: 200px; 
   }
+
+  .dashboard-content-wrapper.info-expanded {
+    margin-top: 350px;
+  }
+
+  .info-bubble.expanded {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .chart-card {
+    min-height: 300px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -295,5 +320,23 @@
 
   .chart-wrapper {
     height: 150px; 
+  }
+
+  .dashboard-content-wrapper.info-expanded {
+    margin-top: 400px;
+  }
+
+  .info-bubble.expanded {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .chart-card {
+    min-height: 250px;
+    padding: 10px;
+  }
+
+  .chart-wrapper {
+    height: 200px;
   }
 }

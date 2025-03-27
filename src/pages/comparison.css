@@ -236,9 +236,21 @@
   height: 400px;
 }
 
+@media (max-width: 1200px) {
+  .comparison-charts-container {
+    width: 95%;
+  }
+
+  .chart-wrapper {
+    height: 350px;
+  }
+}
+
 @media (max-width: 768px) {
   .comparison-search-container {
     padding: 0 5%; 
+    flex-direction: column;
+    gap: 15px;
   }
 
   .comparison-search-input {
@@ -259,6 +271,8 @@
 
   .comparison-character-image {
     max-width: 150px; 
+    width: 150px;
+    height: auto;
   }
 
   .comparison-character-info {
@@ -284,6 +298,15 @@
   
   .side-by-side-charts > div {
     height: 300px;
+  }
+
+  .search-wrapper {
+    width: 100%;
+  }
+
+  .comparison-character-card-info {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -313,5 +336,17 @@
 
   .chart-wrapper {
     height: 200px;
+  }
+
+  .comparison-content-wrapper.info-expanded {
+    margin-top: 350px;
+  }
+
+  .chart-wrapper {
+    height: 250px;
+  }
+
+  .comparison-charts {
+    padding: 10px;
   }
 }
