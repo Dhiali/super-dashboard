@@ -34,6 +34,15 @@ Run the app:
 npm start
 ```
 
+## Features
+
+| Home Page | Compare Page | Timeline Page |
+| :--- | :--- | :--- |
+| Pokemon details overview | Compare Pokemon Details | Pokemon details overview |
+| Pokemon base Stats in a bar chart | Compare Pokemon base stats | Pokemon evolution chain |
+| Pokemon base EV values in a radar chart | Compare pokemon base EV values | Pokemon growth rate |
+| Pokemon weakness table | Compare Pokemon total base stats |  |
+| Pokemon growth rate |  |  |
 
 
 Dashboard Page: Displays a list of top superheroes and villains with interactive character cards.
