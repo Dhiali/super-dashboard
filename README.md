@@ -17,6 +17,23 @@ FaceOff is an interactive data visualization platform that brings superhero and 
 
 ![Faceoff homepage screenshot](https://github.com/Dhiali/super-dashboard/blob/main/src/assets/home%20screen.png?raw=true)
 
+## How To Install
+
+To get started, clone the repo:
+```
+git clone https://github.com/JugheadStudio/Pokemon-API.git
+```
+
+Install all the dependencies using npm:
+```
+npm install
+```
+
+Run the app:
+```
+npm start
+```
+
 
 
 Dashboard Page: Displays a list of top superheroes and villains with interactive character cards.
