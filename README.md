@@ -1,4 +1,7 @@
- ![FaceOff Logo](https://github.com/Dhiali/super-dashboard/blob/main/src/assets/fo%202.3.png?raw=true)  
+<p align="center">
+  <img src="https://github.com/Dhiali/super-dashboard/blob/main/src/assets/fo%202.3.png?raw=true" width="150">
+</p>
+ 
  **FaceOff - Superhero Power Comparison API** 
 
 
