@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import GlowHeader from "../components/glow-header";
 import CharacterChart from "../components/characterchart";
 import ComparisonPowerChart from "../components/comparisonpowerchart";
-import heroes from "../data/heroes";
 import infoIcon from "../assets/info.png";
 import "./dashboard.css";
 import "./comparison.css";
@@ -230,12 +229,12 @@ Welcome to the Comparison Page, where you can put your favorite characters again
                   <CharacterChart
                     character={selectedChar1}
                     type="appearance"
-                    allCharacters={heroes}
+                  
                   />
                   <CharacterChart
                     character={selectedChar2}
                     type="appearance"
-                    allCharacters={heroes}
+              
                   />
                 </div>
               </div>
