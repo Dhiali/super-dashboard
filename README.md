@@ -1,4 +1,5 @@
- ![FaceOff Logo](https://github.com/Dhiali/super-dashboard/blob/main/src/assets/fo%202.3.png?raw=true)  **FaceOff - Superhero Power Comparison API** 
+ ![FaceOff Logo](https://github.com/Dhiali/super-dashboard/blob/main/src/assets/fo%202.3.png?raw=true)  
+ **FaceOff - Superhero Power Comparison API** 
 
 
 Dashboard Page: Displays a list of top superheroes and villains with interactive character cards.
