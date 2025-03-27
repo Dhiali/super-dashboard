@@ -147,6 +147,22 @@
   font-family: "Tw Cen MT";
 }
 
+@media (max-width: 1200px) {
+  .timeline-page {
+    padding: 15px;
+  }
+
+  .content-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .comparison-character-card-info,
+  .alter-egos-chart {
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   .content-container {
     flex-direction: column;
@@ -161,6 +177,18 @@
 
   .timeline-chart {
     width: 100%;
+  }
+
+  .timeline-page.info-expanded {
+    padding-top: 350px;
+  }
+
+  .chart-wrapper {
+    height: 300px;
+  }
+
+  .timeline-chart {
+    width: 95%;
   }
 }
 
@@ -187,5 +215,18 @@
   .alter-egos-chart p,
   .timeline-chart p {
     font-size: 12px;
+  }
+
+  .timeline-page.info-expanded {
+    padding-top: 400px;
+  }
+
+  .timeline-chart {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .chart-wrapper {
+    height: 250px;
   }
 }

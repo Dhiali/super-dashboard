@@ -234,6 +234,12 @@ export default function Dashboard() {
     <h4>Group Affiliations & Relationships</h4>
                 <p>This visualization highlights how characters are linked within their universe revealing key alliances, rivalries and team dynamics at a glance.</p>
                 <p><b>Hover over a dot...</b></p>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
       <CharacterChart character={characters[selectedCharacterIndex]} type="biography" />
     </div>
 
