@@ -10,6 +10,7 @@ FaceOff is an interactive data visualization platform that brings superhero and 
 [![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)](https://axios-http.com/)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 [![ChartJS](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)](https://www.chartjs.org/)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/en)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
 [![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.javascript.com/)
@@ -43,6 +44,10 @@ npm start
 | Featured Character | Visualization Charts | Publisher History |
 | Visualization Charts |  |  |
 | Interactive Info Bubble |  |  |
+
+## The Idea
+
+The idea was to create a website that you could use to get an overview of overall stats, abilities, weaknesses etc. of any Pokemon by just doing a quick search.
 
 
 Dashboard Page: Displays a list of top superheroes and villains with interactive character cards.
