@@ -15,7 +15,7 @@ FaceOff is an interactive data visualization platform that brings superhero and 
 [![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.javascript.com/)
 
 
-![Faceoff homepage screenshot]([https://github.com/JugheadStudio/Github-assets/blob/main/Datamon/datamon-screenshot.png](https://github.com/Dhiali/super-dashboard/blob/main/src/assets/home%20screen.png?raw=true))
+![Faceoff homepage screenshot](https://github.com/Dhiali/super-dashboard/blob/main/src/assets/home%20screen.png?raw=true)
 
 
 
