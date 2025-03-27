@@ -47,8 +47,7 @@ npm start
 
 ## The Idea
 
-The idea was to create a website that you could use to get an overview of overall stats, abilities, weaknesses etc. of any Pokemon by just doing a quick search.
-
+The idea was to create an immersive superhero comparison platform where users can analyze and compare their favorite characters through interactive data visualizations.
 
 Dashboard Page: Displays a list of top superheroes and villains with interactive character cards.
 Comparison Page: Allows users to compare two characters side by side with various charts.
