@@ -3,6 +3,9 @@
 </p>
  
  **FaceOff - Superhero Power Comparison API** 
+# About Datamon
+
+Datamon is an app built using [PokeAPI](https://pokeapi.co/), which is a database of everything you would need to create a website with comprehensive information on anything pokemon related, from every pokemon, all the typings, all the items etc. I used the dataset to create a visual representation of every Pokemon's stats, typings, weaknesses to other typings, the evolution chain and what every Pokemon's base stats are.
 
 
 Dashboard Page: Displays a list of top superheroes and villains with interactive character cards.
