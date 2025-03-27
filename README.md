@@ -21,7 +21,7 @@ FaceOff is an interactive data visualization platform that brings superhero and 
 
 To get started, clone the repo:
 ```
-git clone https://github.com/JugheadStudio/Pokemon-API.git
+git clone https://github.com/Dhiali/super-dashboard.git
 ```
 
 Install all the dependencies using npm:
