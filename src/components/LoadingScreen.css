@@ -12,7 +12,7 @@
 }
 
 .loading-logo {
-  width: 120px; /* Reduced from 180px */
+  width: 120px;
   height: auto;
   position: absolute;
   opacity: 0;
@@ -58,7 +58,7 @@
     transform: translateY(0) rotate(720deg);
     opacity: 1;
   }
-  70% { /* Changed from 80% to 70% to reduce hold time */
+  70% { 
     transform: translateY(0) rotate(720deg);
     opacity: 1;
   }

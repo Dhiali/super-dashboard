@@ -37,7 +37,7 @@ export default function Dashboard() {
           return { ...char, totalPower };
         });
 
-        // Sort by total power and get top 10 (approximately top 5% of fetched characters)
+        // Sort by total power and get top 10 
         const powerfulCharacters = charactersWithPower
           .sort((a, b) => b.totalPower - a.totalPower)
           .slice(0, 12); // Get top 12 characters

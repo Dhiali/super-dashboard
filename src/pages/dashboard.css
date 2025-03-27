@@ -1,7 +1,7 @@
 .dashboard-container {
   font-family: "Tw Cen MT";
   position: relative;
-  z-index: 1; /* Lower z-index than info bubble */
+  z-index: 1; 
   background-color: black;
   color: white;
   min-height: 100vh;
@@ -24,7 +24,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   background-color: rgba(0, 0, 0, 0.8);
-  width: 44px; /* Width of icon + padding */
+  width: 44px; 
 }
 
 
@@ -49,7 +49,7 @@
 .info-text {
   padding-left: 10px;
   color: white;
-  font-size: 20px;  /* Increased from 14px */
+  font-size: 20px;  
   line-height: 1.6;
   text-align: center;
   font-family: "Tw Cen MT";
@@ -118,7 +118,7 @@
 
 .dashboard-content-wrapper {
   transition: all 0.5s ease;
-  margin-top: 80px; /* Reduced from 150px */
+  margin-top: 80px; 
   padding-top: 20px;
   position: relative;
   z-index: 1;
@@ -126,7 +126,7 @@
 }
 
 .dashboard-content-wrapper.info-expanded {
-  margin-top: 450px; /* Reduced from 300px */
+  margin-top: 450px; 
 }
 
 .dashboard-heading {

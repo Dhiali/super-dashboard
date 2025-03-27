@@ -169,7 +169,7 @@ export default function CharacterChart({ character, type, allCharacters }) {
         }
       }
 
-      return height || 170; // Fallback to average height
+      return height || 170;
     };
 
     const comparisonData = [
@@ -250,21 +250,21 @@ export default function CharacterChart({ character, type, allCharacters }) {
       const estimatedStartYear = firstAppearanceYear + Math.floor((index * maxDuration) / connections.length);
       const duration = currentYear - estimatedStartYear;
       return { connection, startYear: estimatedStartYear, duration };
-    }).sort((a, b) => a.duration - b.duration); // Sort by duration
+    }).sort((a, b) => a.duration - b.duration); 
 
     const data = {
       labels: connectionData.map(data => data.startYear.toString()),
       datasets: [{
         label: 'Relationship Duration',
         data: connectionData.map(data => data.duration),
-        borderColor: '#ff007f', // Changed to pink
-        backgroundColor: 'rgba(207, 22, 115, 0.44)', // Pink with transparency
+        borderColor: '#ff007f', 
+        backgroundColor: 'rgba(207, 22, 115, 0.44)', 
         tension: 0.4,
         fill: true,
         pointStyle: 'circle',
         pointRadius: 8,
         pointHoverRadius: 12,
-        pointBackgroundColor: '#ff007f', // Pink points
+        pointBackgroundColor: '#ff007f', 
         pointBorderColor: '#fff',
         pointBorderWidth: 2
       }]
@@ -291,7 +291,7 @@ export default function CharacterChart({ character, type, allCharacters }) {
         },
         title: {
           display: true,
-          text: `${character.name}'s Connection Diagram`, // Changed title to use character name
+          text: `${character.name}'s Connection Diagram`, 
           color: '#fff',
           font: {
             family: '"Tw Cen MT", sans-serif',
@@ -335,6 +335,8 @@ export default function CharacterChart({ character, type, allCharacters }) {
     );
   }
 
+
+
   if (type === 'work') {
     // Get aliases and calculate their relative durations
     const aliases = character.biography?.aliases || [];
@@ -377,17 +379,17 @@ export default function CharacterChart({ character, type, allCharacters }) {
             color: '#ffffff',
             font: {
               family: '"Tw Cen MT", sans-serif',
-              size: 10, // Reduced font size
+              size: 10, 
               weight: '300'
             },
-            padding: 5, // Reduced padding
-            boxWidth: 10, // Reduced box width
-            usePointStyle: true, // Use point style for more compact look
+            padding: 5, 
+            boxWidth: 10, 
+            usePointStyle: true, 
           },
-          maxHeight: 80 // Limit legend height
+          maxHeight: 80
         },
         title: {
-          display: false // Remove title since we have legend now
+          display: false 
         },
         tooltip: {
           callbacks: {
@@ -406,7 +408,7 @@ export default function CharacterChart({ character, type, allCharacters }) {
         height: '100%', 
         width: '100%',
         display: 'flex',
-        justifyContent: 'center', // Added to center horizontally
+        justifyContent: 'center', 
         alignItems: 'center',
       }}>
         <div style={{ width: '100%', height: '400px' }}> {/* Changed from flexBasis to width */}
@@ -417,7 +419,7 @@ export default function CharacterChart({ character, type, allCharacters }) {
   }
 
   if (type === 'aliases') {
-    // Create chronological event list
+ 
     const timelineEvents = [
       // Birth/Origin event
       {
@@ -453,10 +455,10 @@ export default function CharacterChart({ character, type, allCharacters }) {
     ].filter(event => event.event && event.event !== 'null' && event.event !== '-');
 
     const eventColors = {
-      birth: '#ff6384',    // Pink
-      debut: '#36a2eb',    // Blue
-      alias: '#FF0000',    // Yellow
-      work: '#4bc0c0'      // Teal
+      birth: '#ff6384',  
+      debut: '#36a2eb',   
+      alias: '#FF0000',  
+      work: '#4bc0c0'     
     };
 
     const data = {
@@ -517,7 +519,7 @@ export default function CharacterChart({ character, type, allCharacters }) {
           },
           ticks: {
             color: '#fff',
-            callback: () => ''  // Hide y-axis labels
+            callback: () => ''  
           },
           grid: { color: '#777' }
         }

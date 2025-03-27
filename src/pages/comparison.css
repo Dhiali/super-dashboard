@@ -1,7 +1,7 @@
 .comparison-search-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 40px; /* Increased from 20px */
+  margin-top: 40px; 
   padding: 0 10%;
   font-family: "Tw Cen MT";
   position: relative;
@@ -46,7 +46,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   background-color: rgba(0, 0, 0, 0.8);
-  width: 44px; /* Width of icon + padding */
+  width: 44px; 
 }
 
 .info-cbubble.expanded {
@@ -84,15 +84,15 @@
 
 .comparison-content-wrapper {
   transition: all 0.5s ease;
-  margin-top: 80px; /* Reduced from 150px */
+  margin-top: 80px; 
   padding-top: 20px;
   position: relative;
   z-index: 1;
-  font-family: "Tw Cen MT"; /* Lower z-index than info bubble */
+  font-family: "Tw Cen MT"; 
 }
 
 .comparison-content-wrapper.info-expanded {
-  margin-top: 300px; /* Increased from 250px to avoid overlap */
+  margin-top: 300px; 
 }
 
 .comparison-cards-container {
@@ -155,9 +155,9 @@
   margin: 20px auto;
   width: 90%;
   font-family: "Tw Cen MT";
-  margin-bottom: 100px; /* Add significant bottom margin */
-  min-height: calc(100vh - 800px); /* Ensure minimum height with space at bottom */
-  padding-bottom: 100px; /* Add padding at the bottom */
+  margin-bottom: 100px; 
+  min-height: calc(100vh - 800px); 
+  padding-bottom: 100px; 
 }
 
 .comparison-charts {
@@ -189,7 +189,7 @@
 .comparison-charts.full-width {
   width: 100%;
   margin-top: 20px;
-  margin-bottom: 150px; /* Add bottom margin for consistent spacing */
+  margin-bottom: 150px; 
 }
 
 .chart-wrapper {
@@ -309,5 +309,3 @@
     align-items: center;
   }
 }
-
-/* Remove all @media (max-width: 480px) styles */
