@@ -10,11 +10,48 @@ FaceOff is an interactive data visualization platform that brings superhero and 
 [![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)](https://axios-http.com/)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 [![ChartJS](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)](https://www.chartjs.org/)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/en)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
 [![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.javascript.com/)
 
 
+![Faceoff homepage screenshot](https://github.com/Dhiali/super-dashboard/blob/main/src/assets/home%20screen.png?raw=true)
+
+## How To Install
+
+To get started, clone the repo:
+```
+git clone https://github.com/Dhiali/super-dashboard.git
+```
+
+Install all the dependencies using npm:
+```
+npm install
+```
+
+Run the app:
+```
+npm start
+```
+
+## Features
+
+| Home Page | Compare Page | Timeline Page |
+| :--- | :--- | :--- |
+| Character Gallery | Dual Search System | Character Evolution |
+| Global Statistics | Character Cards | Interactive Timeline |
+| Featured Character | Visualization Charts | Publisher History |
+| Visualization Charts |  |  |
+| Interactive Info Bubble |  |  |
+
+## The Idea
+
+The idea was to create an immersive superhero comparison platform where users can analyze and compare their favorite characters through interactive data visualizations.
+
+## Wireframes
+
+![Wireframe](https://github.com/JugheadStudio/Github-assets/blob/main/Datamon/wireframes.png)
 
 
 
