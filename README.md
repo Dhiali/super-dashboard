@@ -94,10 +94,8 @@ The idea was to create an immersive superhero comparison platform where users ca
 
 ![Wireframe](https://github.com/Dhiali/super-dashboard/blob/main/src/assets/wireframess.png?raw=true)
 
-## Development Process
 
-### Highlights
-The development process prioritized user experience, implementing a dual search system that allows real-time character comparison. The interactive radar charts became a standout feature, displaying power statistics in an intuitive format. We integrated smooth transitions and glowing effects to enhance the comic-book aesthetic, while maintaining responsive design principles for optimal viewing across devices. The information bubble feature provides context and guidance, making the platform accessible to both casual fans and dedicated comic enthusiasts.
+
 
 ### Challenges
 One of the primary challenges involved managing API calls efficiently. Initially, we faced performance issues due to multiple components making independent API calls. We resolved this by implementing a centralized API handling system that manages data fetching and distribution. State management presented another significant challenge, particularly with the dual search system. We overcame this by implementing a consolidated state management approach using React's useState hook, which improved component communication and reduced unnecessary re-renders. Tablet responsiveness required careful consideration, especially for the chart components. We addressed this through CSS media queries and flexible layouts that adapt to different screen sizes while maintaining functionality.
@@ -107,8 +105,44 @@ Throughout the development, we gained valuable insights into efficient API integ
 ## Demonstration
 [Link To Demonstration Video](https://drive.google.com/drive/folders/1Y0wYQVNzQextt4zcyJ20wf5Buxe7BxJJ?usp=sharing)
 
-License
+## Conclusion
+
+### Highlights
+- Successfully implemented interactive data visualizations for superhero statistics using Chart.js.
+- Developed a dual search and comparison system for side-by-side character analysis.
+- Designed a responsive and visually engaging UI with glowing effects and smooth transitions.
+- Integrated info bubbles and tooltips to enhance user guidance and accessibility.
+
+### Challenges & Solutions
+- **CORS Issues with Images:**
+  - Challenge: Loading images from third-party APIs resulted in CORS errors.
+  - Solution: Implemented a local proxy server to fetch and serve images, bypassing CORS restrictions.
+- **API Data Inconsistencies:**
+  - Challenge: Some characters had missing or inconsistent data fields.
+  - Solution: Added robust error handling and fallback values to ensure a smooth user experience.
+- **State Management for Comparisons:**
+  - Challenge: Managing state for dual character selection and comparison.
+  - Solution: Utilized React hooks and modularized state logic for clarity and maintainability.
+
+### Future Improvements
+- Add user authentication and the ability to save favorite characters or comparisons.
+- Implement advanced analytics and trend visualizations.
+- Expand the timeline feature with more granular historical data.
+- Improve accessibility and add localization for multiple languages.
+- Optimize performance for large datasets and mobile devices.
+
+---
+
+### Licensing
 This project is licensed under the MIT License.
+
+### Author & Contact
+**Author:** Dhiali Chetty  
+**Email:** info@dhialidigitaldesigns.co.za
+
+### Resources
+- [Figma](https://figma.com/) (UI/UX design)
+- [ChatGPT](https://chat.openai.com/) (AI assistance)
 
 This README file provides an overview of the project, setup instructions, and details about the approach taken to make the website responsive. If you have any questions or need further assistance, feel free to ask!
 
