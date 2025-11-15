@@ -56,15 +56,35 @@ Run the app:
 npm start
 ```
 
-## Features
 
-| Home Page | Compare Page | Timeline Page |
-| :--- | :--- | :--- |
-| Character Gallery | Dual Search System | Character Evolution |
-| Global Statistics | Character Cards | Interactive Timeline |
-| Featured Character | Visualization Charts | Publisher History |
-| Visualization Charts |  |  |
-| Interactive Info Bubble |  |  |
+## Project Features
+
+### Main Features & Functionality
+
+- **Character Gallery (Home Page):**
+  - Browse a curated gallery of the most powerful superheroes and villains.
+  - Click on any character card to view detailed charts of their power stats and physical attributes.
+  - View global statistics and featured characters.
+  - Interactive info bubble provides helpful tips and context.
+
+- **Comparison View:**
+  - Dual search system to find and select any two characters.
+  - Side-by-side comparison of character stats, biographies and images.
+  - Interactive radar and polar area charts for visualizing power and physical attributes.
+
+- **Timeline View:**
+  - Explore a character's history, evolution and publisher timeline.
+  - Interactive timeline chart and info cards for key events.
+
+- **Visualization & Analytics:**
+  - Dynamic charts (powered by Chart.js) for power stats, physical attributes and timelines.
+  - Responsive design for desktop and mobile devices.
+
+- **User Experience:**
+  - Smooth transitions and glowing effects for a comic-book aesthetic.
+  - Info bubbles and tooltips for guidance and context.
+
+These features provide an engaging and interactive platform for exploring, comparing, and analyzing superhero data.
 
 ## The Idea
 
