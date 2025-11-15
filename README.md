@@ -25,7 +25,21 @@ FaceOff is an interactive data visualization platform that brings superhero and 
 
 ![Faceoff homepage screenshot](https://github.com/Dhiali/super-dashboard/blob/main/src/assets/home%20screen.png?raw=true)
 
+
 ## How To Install
+
+### Prerequisites
+
+- **Node.js** (v14 or higher recommended): [Download Node.js](https://nodejs.org/)
+- **npm** (comes with Node.js) or **yarn** for package management.
+- **SuperHero API Key**: Register for a free API key at [SuperHero API](https://superheroapi.com/index.html). Add your API key to a `.env` file in the project root as:
+  ```env
+  REACT_APP_SUPERHERO_API_TOKEN=your_api_key_here
+  ```
+- **Git** (for cloning the repository): [Download Git](https://git-scm.com/)
+- **(Optional) React DevTools**: For debugging React apps, install the [React DevTools browser extension](https://react.dev/link/react-devtools).
+
+Make sure all prerequisites are installed before proceeding with the installation steps below.
 
 To get started, clone the repo:
 ```
