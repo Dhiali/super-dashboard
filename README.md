@@ -4,6 +4,23 @@
  
 
 # FaceOff - Superhero Power Comparison API Website
+
+<details>
+<summary><strong>Table of Contents</strong></summary>
+
+- [Project Overview](#faceoff---superhero-power-comparison-api-website)
+- [Built With](#built-with)
+- [How To Install](#how-to-install)
+- [Project Features](#project-features)
+- [The Idea](#the-idea)
+- [Wireframes](#wireframes)
+- [Development Process](#development-process)
+- [Conclusion](#conclusion)
+- [Licensing](#licensing)
+- [Author & Contact](#author--contact)
+- [Resources](#resources)
+
+</details>
 ### Author
 Dhiali Chetty
 
