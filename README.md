@@ -127,9 +127,6 @@ The idea was to create an immersive superhero comparison platform where users ca
 - **Tablet responsiveness:**
   - Challenge: Required careful consideration, especially for the chart components.
   - Solution: Addressed through CSS media queries and flexible layouts that adapt to different screen sizes while maintaining functionality.
-- **CORS Issues with Images:**
-  - Challenge: Loading images from third-party APIs resulted in CORS errors.
-  - Solution: Implemented a local proxy server to fetch and serve images, bypassing CORS restrictions.
 - **API Data Inconsistencies:**
   - Challenge: Some characters had missing or inconsistent data fields.
   - Solution: Added robust error handling and fallback values to ensure a smooth user experience.
