@@ -155,5 +155,5 @@ This project is licensed under the MIT License.
 - [Figma](https://figma.com/) (UI/UX design)
 - [ChatGPT](https://chat.openai.com/) (AI assistance)
 
-This README file provides an overview of the project, setup instructions, and details about the approach taken to make the website responsive. If you have any questions or need further assistance, feel free to ask!
+This README file provides an overview of the project, setup instructions and details about the approach taken to make the website responsive. If you have any questions or need further assistance, feel free to ask!
 
