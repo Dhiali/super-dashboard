@@ -100,7 +100,7 @@ npm start
   - Smooth transitions and glowing effects for a comic-book aesthetic.
   - Info bubbles and tooltips for guidance and context.
 
-These features provide an engaging and interactive platform for exploring, comparing, and analyzing superhero data.
+These features provide an engaging and interactive platform for exploring, comparing and analyzing superhero data.
 
 ## The Idea
 
@@ -109,14 +109,6 @@ The idea was to create an immersive superhero comparison platform where users ca
 ## Wireframes
 
 ![Wireframe](https://github.com/Dhiali/super-dashboard/blob/main/src/assets/wireframess.png?raw=true)
-
-
-
-
-### Challenges
-One of the primary challenges involved managing API calls efficiently. Initially, we faced performance issues due to multiple components making independent API calls. We resolved this by implementing a centralized API handling system that manages data fetching and distribution. State management presented another significant challenge, particularly with the dual search system. We overcame this by implementing a consolidated state management approach using React's useState hook, which improved component communication and reduced unnecessary re-renders. Tablet responsiveness required careful consideration, especially for the chart components. We addressed this through CSS media queries and flexible layouts that adapt to different screen sizes while maintaining functionality.
-
-Throughout the development, we gained valuable insights into efficient API integration, state management patterns and responsive design principles. The project highlighted the importance of planning component architecture before implementation and the benefits of centralized data management. Future improvements could include implementing a caching system for frequently accessed character data, expanding the comparison metrics and adding more interactive features like character relationship networks. The development process has established a solid foundation for future enhancements while maintaining the core goal of providing an engaging platform for superhero comparison.
 
 ## Demonstration
 [Link To Demonstration Video](https://drive.google.com/drive/folders/1Y0wYQVNzQextt4zcyJ20wf5Buxe7BxJJ?usp=sharing)
@@ -130,6 +122,12 @@ Throughout the development, we gained valuable insights into efficient API integ
 - Integrated info bubbles and tooltips to enhance user guidance and accessibility.
 
 ### Challenges & Solutions
+- **Managing API calls efficiently:**
+  - Challenge: Faced performance issues due to multiple components making independent API calls.
+  - Solution: Implementing a centralized API handling system that manages data fetching and distribution.
+- **Tablet responsiveness:**
+  - Challenge: Required careful consideration, especially for the chart components.
+  - Solution: Addressed through CSS media queries and flexible layouts that adapt to different screen sizes while maintaining functionality.
 - **CORS Issues with Images:**
   - Challenge: Loading images from third-party APIs resulted in CORS errors.
   - Solution: Implemented a local proxy server to fetch and serve images, bypassing CORS restrictions.
@@ -146,6 +144,7 @@ Throughout the development, we gained valuable insights into efficient API integ
 - Expand the timeline feature with more granular historical data.
 - Improve accessibility and add localization for multiple languages.
 - Optimize performance for large datasets and mobile devices.
+- Implementing a caching system for frequently accessed character data.
 
 ---
 
