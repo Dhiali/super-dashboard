@@ -14,7 +14,6 @@
 - [Project Features](#project-features)
 - [The Idea](#the-idea)
 - [Wireframes](#wireframes)
-- [Development Process](#development-process)
 - [Conclusion](#conclusion)
 - [Licensing](#licensing)
 - [Author & Contact](#author--contact)
